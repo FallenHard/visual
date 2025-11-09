@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import "../../AdminPage.css"
+import "../../AdminAgendamento.css"
 
 export default function AdminPage() {
     const [agendamentos, setAgendamentos] = useState([])

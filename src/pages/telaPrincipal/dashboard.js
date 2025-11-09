@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "../../barber.css"
-import "./dashboard.css"
+import "../../dashboard.css"
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("novo")

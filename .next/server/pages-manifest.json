@@ -1,5 +1,8 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/telaPrincipal/dashboard": "pages/telaPrincipal/dashboard.js",
+  "/auth/Login": "pages/auth/Login.js",
+  "/auth/Register": "pages/auth/Register.js",
   "/_document": "pages/_document.js"
 }
