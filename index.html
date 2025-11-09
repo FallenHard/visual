@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            min-height: 550px;
+        }
+
+        .side-panel {
+            background: linear-gradient(135deg, #d4a574 0%, #b8860b 100%);
+            padding: 60px 40px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .side-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.05) 10px,
+                    rgba(255, 255, 255, 0.05) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .side-panel h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .side-panel p {
+            font-size: 16px;
+            text-align: center;
+            line-height: 1.6;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .form-panel {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h3 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8f8f8;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #d4a574;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 25px;
+        }
+
+        .forgot-password a {
+            color: #d4a574;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #d4a574 0%, #b8860b 100%);
+            color: #1a1a1a;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .toggle-form a {
+            color: #d4a574;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::before {
+            margin-right: 15px;
+        }
+
+        .divider::after {
+            margin-left: 15px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .social-btn:hover {
+            border-color: #d4a574;
+            background: #f8f8f8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .side-panel {
+                padding: 40px 30px;
+                min-height: 200px;
+            }
+
+            .form-panel {
+                padding: 40px 30px;
+            }
+
+            .side-panel h2 {
+                font-size: 24px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="side-panel">
+            <div class="logo">✂️</div>
+            <h2>Barbearia Premium</h2>
+            <p>Estilo, tradição e excelência em cada corte. Agende seu horário e faça parte da nossa comunidade.</p>
+        </div>
+
+        <div class="form-panel">
+            <!-- Login Form -->
+            <div class="form-container active" id="loginForm">
+                <h3>Bem-vindo de volta!</h3>
+                <p class="subtitle">Entre com suas credenciais para continuar</p>
+
+                <form>
+                    <div class="input-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="login-password">Senha</label>
+                        <input type="password" id="login-password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit">Entrar</button>
+                </form>
+
+                <div class="divider">ou continue com</div>
+
+                <div class="social-login">
+                    <button class="social-btn">Google</button>
+                    <button class="social-btn">Facebook</button>
+                </div>
+
+                <div class="toggle-form">
+                    Não tem uma conta? <a onclick="toggleForms()">Cadastre-se</a>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div class="form-container" id="registerForm">
+                <h3>Criar conta</h3>
+                <p class="subtitle">Preencha os dados para se cadastrar</p>
+
+                <form>
+                    <div class="input-group">
+                        <label for="register-name">Nome completo</label>
+                        <input type="text" id="register-name" placeholder="João Silva" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="register-email">E-mail</label>
+                        <input type="email" id="register-email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="register-phone">Telefone</label>
+                        <input type="tel" id="register-phone" placeholder="(11) 99999-9999" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="register-password">Senha</label>
+                        <input type="password" id="register-password" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+
+                <div class="toggle-form">
+                    Já tem uma conta? <a onclick="toggleForms()">Faça login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            loginForm.classList.toggle('active');
+            registerForm.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

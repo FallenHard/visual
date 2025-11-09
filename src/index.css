@@ -1,0 +1,78 @@
+/* --- RESET GLOBAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* --- FUNDO MODERNO --- */
+body {
+  background: radial-gradient(circle at top left, #a8e6ff, #c2f0f7, #e0f7fa);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* --- BOTÃO COM EFEITO ANIMADO --- */
+.btn-fancy {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 0.9rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #fff;
+  background-color: #00bcd4;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+  cursor: pointer;
+}
+
+.btn-fancy::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #0097a7;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  z-index: -1;
+  /* 👈 importante */
+}
+
+.btn-fancy:hover::before {
+  width: 100%;
+}
+
+.btn-fancy span {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- INPUTS E FORMULÁRIO (opcional, melhora o visual) --- */
+input {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
+  outline: none;
+}
