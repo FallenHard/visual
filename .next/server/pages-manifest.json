@@ -1,8 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/telaPrincipal/dashboard": "pages/telaPrincipal/dashboard.js",
-  "/auth/Login": "pages/auth/Login.js",
-  "/auth/Register": "pages/auth/Register.js",
-  "/_document": "pages/_document.js"
-}
+{"/_app":"pages/_app.js","/_error":"pages/_error.js","/auth/Login":"pages/auth/Login.html","/auth/Register":"pages/auth/Register.html","/telaPrincipal/dashboard":"pages/telaPrincipal/dashboard.html","/_document":"pages/_document.js","/404":"pages/404.html"}

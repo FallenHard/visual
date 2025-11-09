@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/navigation";
 import "../../barber.css"
 import "../../dashboard.css"
 
@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [barbeiros, setBarbeiros] = useState([])
   const [agendamentos, setAgendamentos] = useState([])
   const [userRole, setUserRole] = useState("")
-  const navigate = useNavigate()
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     servicoId: "",

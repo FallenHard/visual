@@ -5,49 +5,49 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/r-wKqO7GbLlyMUV73ClXM/_buildManifest.js",
-    "static/r-wKqO7GbLlyMUV73ClXM/_ssgManifest.js"
+    "static/Y3PqYYwu6D6Ro0qJ-gxg-/_buildManifest.js",
+    "static/Y3PqYYwu6D6Ro0qJ-gxg-/_ssgManifest.js"
   ],
   "rootMainFiles": [
     "static/chunks/webpack-1a6d75351b972dd1.js",
-    "static/chunks/fd9d1056-d909291c50fc10cd.js",
-    "static/chunks/117-1f83e379246f50d1.js",
+    "static/chunks/fd9d1056-9f91b5e418130764.js",
+    "static/chunks/117-36a8ed0a82415c85.js",
     "static/chunks/main-app-a6d9f1316f978810.js"
   ],
   "pages": {
     "/_app": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
-      "static/chunks/framework-902b4b0e1cc801dc.js",
-      "static/chunks/main-1accb18c48dd1aaa.js",
+      "static/chunks/framework-6bb7d6253c30bdb1.js",
+      "static/chunks/main-2568735bc53aefdd.js",
       "static/chunks/pages/_app-72b849fbd24ac258.js"
     ],
     "/_error": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
-      "static/chunks/framework-902b4b0e1cc801dc.js",
-      "static/chunks/main-1accb18c48dd1aaa.js",
+      "static/chunks/framework-6bb7d6253c30bdb1.js",
+      "static/chunks/main-2568735bc53aefdd.js",
       "static/chunks/pages/_error-7ba65e1336b92748.js"
     ],
     "/auth/Login": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
-      "static/chunks/framework-902b4b0e1cc801dc.js",
-      "static/chunks/main-1accb18c48dd1aaa.js",
+      "static/chunks/framework-6bb7d6253c30bdb1.js",
+      "static/chunks/main-2568735bc53aefdd.js",
       "static/css/464034e805297a77.css",
-      "static/chunks/pages/auth/Login-322c469d720af3e8.js"
+      "static/chunks/pages/auth/Login-c576c9a247a93747.js"
     ],
     "/auth/Register": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
-      "static/chunks/framework-902b4b0e1cc801dc.js",
-      "static/chunks/main-1accb18c48dd1aaa.js",
+      "static/chunks/framework-6bb7d6253c30bdb1.js",
+      "static/chunks/main-2568735bc53aefdd.js",
       "static/css/464034e805297a77.css",
-      "static/chunks/pages/auth/Register-730b5b441c7dffe8.js"
+      "static/chunks/pages/auth/Register-35bf9adc78b8ffad.js"
     ],
     "/telaPrincipal/dashboard": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
-      "static/chunks/framework-902b4b0e1cc801dc.js",
-      "static/chunks/main-1accb18c48dd1aaa.js",
-      "static/chunks/caf68963-0569aa68b87e3bb4.js",
+      "static/chunks/framework-6bb7d6253c30bdb1.js",
+      "static/chunks/main-2568735bc53aefdd.js",
+      "static/chunks/332-14a35d4ee0e0ba36.js",
       "static/css/4c31790efdd598a7.css",
-      "static/chunks/pages/telaPrincipal/dashboard-53f33901a053416a.js"
+      "static/chunks/pages/telaPrincipal/dashboard-8fdc2a6d70f1f4be.js"
     ]
   },
   "ampFirstPages": []

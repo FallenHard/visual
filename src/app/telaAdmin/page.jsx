@@ -1,14 +1,15 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/navigation";
 import "../../AdminAgendamento.css"
 
 export default function AdminPage() {
     const [agendamentos, setAgendamentos] = useState([])
     const [loading, setLoading] = useState(true)
     const [filtroStatus, setFiltroStatus] = useState("todos")
-    const navigate = useNavigate()
+    const router = useRouter();
+
 
     useEffect(() => {
         const token = localStorage.getItem("token")
