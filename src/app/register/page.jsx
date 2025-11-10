@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { use, useState } from "react"
 import "../../barber.css"
+import { te } from "date-fns/locale/te"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
 
@@ -10,6 +11,7 @@ function Register() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [telefone, setTelefone] = useState("")
     const [confirm, setConfirm] = useState("")
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
@@ -30,7 +32,7 @@ function Register() {
             const res = await fetch(`${API_URL}/api/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nomeCompleto: name, email, password }),
+                body: JSON.stringify({ nomeCompleto: name, email, password, telefone }),
             })
 
             if (!res.ok) throw new Error("Erro ao cadastrar")
@@ -77,6 +79,18 @@ function Register() {
                             placeholder="seuemail@gmail.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">Telefone</label>
+                        <input
+                            type="email"
+                            className="barber-input"
+                            placeholder="Seu telefone:"
+                            value={telefone}
+                            onChange={(e) => setTelefone(e.target.value)}
                             required
                         />
                     </div>

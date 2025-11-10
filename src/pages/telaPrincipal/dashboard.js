@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation"
 import "../../barber.css"
 import "../../dashboard.css"
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
+
+
 export default function Dashboard() {
     const [activeTab, setActiveTab] = useState("novo")
     const [servicos, setServicos] = useState([])
@@ -53,9 +56,9 @@ export default function Dashboard() {
             setRole(userRole)
 
             const [servicosRes, barbeirosRes, agRes] = await Promise.all([
-                fetch("https://localhost:7037/api/Servicos/todos", { headers: { Authorization: `Bearer ${token}` } }),
-                fetch("https://localhost:7037/api/Proprietarios/todos", { headers: { Authorization: `Bearer ${token}` } }),
-                fetch("https://localhost:7037/api/Agendamento/todos", { headers: { Authorization: `Bearer ${token}` } }),
+                fetch(`${API_URL}/api/Servicos/todos`, { headers: { Authorization: `Bearer ${token}` } }),
+                fetch(`${API_URL}/api/Proprietarios/todos`, { headers: { Authorization: `Bearer ${token}` } }),
+                fetch(`${API_URL}/api/Agendamento/todos`, { headers: { Authorization: `Bearer ${token}` } }),
             ])
 
             if (servicosRes.ok) setServicos(await servicosRes.json())
@@ -116,7 +119,7 @@ export default function Dashboard() {
         }
 
         try {
-            const res = await fetch("https://localhost:7037/api/Agendamento/criar", {
+            const res = await fetch(`${API_URL}/api/Agendamento/criar`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -150,7 +153,7 @@ export default function Dashboard() {
             return mostrarToast("⚠️ Preencha nome e preço.")
 
         try {
-            const res = await fetch("https://localhost:7037/api/Servicos/criar", {
+            const res = await fetch(`${API_URL}/api/Servicos/criar`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -177,7 +180,7 @@ export default function Dashboard() {
         const token = localStorage.getItem("token")
         if (!confirm("Deseja realmente excluir este serviço?")) return
         try {
-            const res = await fetch(`https://localhost:7037/api/Servicos/${id}`, {
+            const res = await fetch(`${API_URL}/api/Servicos/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             })
@@ -194,7 +197,7 @@ export default function Dashboard() {
         e.preventDefault()
         const token = localStorage.getItem("token")
         try {
-            const res = await fetch(`https://localhost:7037/api/Servicos/${servicoEditando.id}`, {
+            const res = await fetch(`${API_URL}/api/Servicos/${servicoEditando.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
