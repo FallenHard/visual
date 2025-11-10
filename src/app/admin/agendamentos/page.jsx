@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import "../../../AdminAgendamento.css"
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
+
 export default function AdminPage() {
     const [agendamentos, setAgendamentos] = useState([])
     const [loading, setLoading] = useState(true)
@@ -27,7 +29,7 @@ export default function AdminPage() {
         }
 
         try {
-            const response = await fetch("https://localhost:7037/api/Agendamento/todos-admin", {
+            const response = await fetch(`${API_URL}/api/Agendamento/todos-admin`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
             if (response.ok) {
@@ -48,7 +50,7 @@ export default function AdminPage() {
         const token = localStorage.getItem("token")
 
         try {
-            const response = await fetch(`https://localhost:7037/api/Agendamento/concluir/${modalAgendamento.id}`, {
+            const response = await fetch(`${API_URL}/api/Agendamento/concluir/${modalAgendamento.id}`, {
                 method: "PUT",
                 headers: { Authorization: `Bearer ${token}` },
             })
@@ -70,7 +72,7 @@ export default function AdminPage() {
         const token = localStorage.getItem("token")
 
         try {
-            const response = await fetch(`https://localhost:7037/api/Agendamento/${modalExcluir.id}`, {
+            const response = await fetch(`${API_URL}/api/Agendamento/${modalExcluir.id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             })
@@ -117,15 +119,9 @@ export default function AdminPage() {
         receita: agendamentos.reduce((sum, a) => sum + (a.precoFinal || 0), 0),
     }
 
-    const formatarData = (dataString) => {
-        const data = new Date(dataString)
-        return data.toLocaleDateString("pt-BR")
-    }
-
-    const formatarHora = (dataString) => {
-        const data = new Date(dataString)
-        return data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
-    }
+    const formatarData = (dataString) => new Date(dataString).toLocaleDateString("pt-BR")
+    const formatarHora = (dataString) =>
+        new Date(dataString).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
 
     return (
         <div className="admin-container">
@@ -170,7 +166,6 @@ export default function AdminPage() {
                 </div>
             </div>
 
-            {/* 🔹 Filtros */}
             <div className="admin-filters">
                 <button className={`filter-btn ${filtroStatus === "todos" ? "active" : ""}`} onClick={() => setFiltroStatus("todos")}>
                     Todos ({stats.total})
@@ -247,7 +242,7 @@ export default function AdminPage() {
                 </div>
             )}
 
-            {/* 🔹 Modal de Conclusão */}
+            {/* Modal Concluir */}
             {modalAgendamento && (
                 <div className="modal-overlay">
                     <div className="modal-box">
@@ -263,7 +258,7 @@ export default function AdminPage() {
                 </div>
             )}
 
-            {/* 🔹 Modal de Exclusão */}
+            {/* Modal Excluir */}
             {modalExcluir && (
                 <div className="modal-overlay">
                     <div className="modal-box">

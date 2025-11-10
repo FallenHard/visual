@@ -1,25 +1,25 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 import "../../AdminAgendamento.css"
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
 
 export default function AdminPage() {
     const [agendamentos, setAgendamentos] = useState([])
     const [loading, setLoading] = useState(true)
     const [filtroStatus, setFiltroStatus] = useState("todos")
-    const router = useRouter();
-
+    const router = useRouter()
 
     useEffect(() => {
         const token = localStorage.getItem("token")
         if (!token) {
             alert("Faça login para acessar o painel.")
-            navigate("/login")
+            router.push("/login")
             return
         }
 
-        // confere role no token
         try {
             const payload = JSON.parse(atob(token.split(".")[1]))
             const role =
@@ -27,12 +27,11 @@ export default function AdminPage() {
 
             if (role !== "Proprietario") {
                 alert("Acesso restrito aos proprietários.")
-                navigate("/dashboard")
+                router.push("/dashboard")
                 return
             }
         } catch {
-            // caso token inválido
-            navigate("/login")
+            router.push("/login")
             return
         }
 
@@ -44,8 +43,7 @@ export default function AdminPage() {
         const token = localStorage.getItem("token")
         setLoading(true)
         try {
-            // use o endpoint de admin protegido
-            const res = await fetch("https://localhost:7037/api/Agendamento/todos-admin", {
+            const res = await fetch(`${API_URL}/api/Agendamento/todos-admin`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -54,7 +52,7 @@ export default function AdminPage() {
             if (!res.ok) {
                 if (res.status === 401 || res.status === 403) {
                     alert("Sessão expirada ou sem permissão.")
-                    navigate("/login")
+                    router.push("/login")
                     return
                 }
                 const txt = await res.text()
@@ -63,7 +61,6 @@ export default function AdminPage() {
 
             const data = await res.json()
 
-            // normaliza para o formato esperado na UI
             const normalizados = (Array.isArray(data) ? data : []).map((a) => ({
                 id: a.id,
                 servicoNome: a.servico?.nome || "Serviço",
@@ -91,27 +88,19 @@ export default function AdminPage() {
 
     const stats = {
         total: agendamentos.length,
-        confirmados: agendamentos.filter((a) => a.status?.toLowerCase() === "confirmado")
-            .length,
-        pendentes: agendamentos.filter((a) => a.status?.toLowerCase() === "pendente")
-            .length,
+        confirmados: agendamentos.filter((a) => a.status?.toLowerCase() === "confirmado").length,
+        pendentes: agendamentos.filter((a) => a.status?.toLowerCase() === "pendente").length,
         receita: agendamentos.reduce((sum, a) => sum + (a.precoFinal || 0), 0),
     }
 
-    const formatarData = (dataString) => {
-        const data = new Date(dataString)
-        return data.toLocaleDateString("pt-BR")
-    }
-
-    const formatarHora = (dataString) => {
-        const data = new Date(dataString)
-        return data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
-    }
+    const formatarData = (dataString) => new Date(dataString).toLocaleDateString("pt-BR")
+    const formatarHora = (dataString) =>
+        new Date(dataString).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
 
     return (
         <div className="admin-container">
             <header className="admin-header">
-                <button className="admin-back-btn" onClick={() => navigate("/dashboard")}>
+                <button className="admin-back-btn" onClick={() => router.push("/dashboard")}>
                     ← Voltar
                 </button>
                 <div>
