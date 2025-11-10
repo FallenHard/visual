@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { FiEye, FiEyeOff } from "react-icons/fi" // 👈 ícones elegantes
 import "../../barber.css"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
@@ -10,6 +11,7 @@ export default function Login() {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false) // 👈 controle de visibilidade
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -53,6 +55,7 @@ export default function Login() {
                 <p className="welcome-subtitle">Faça login para acessar sua conta</p>
 
                 <form onSubmit={handleSubmit} className="barber-form">
+                    {/* EMAIL */}
                     <div className="form-group">
                         <label className="form-label">Email</label>
                         <input
@@ -65,20 +68,39 @@ export default function Login() {
                         />
                     </div>
 
-                    <div className="form-group">
+                    {/* SENHA COM OLHO */}
+                    <div className="form-group" style={{ position: "relative" }}>
                         <label className="form-label">Senha</label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             className="barber-input"
                             placeholder="••••••••"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
+                        <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            style={{
+                                position: "absolute",
+                                right: "12px",
+                                top: "35px",
+                                cursor: "pointer",
+                                color: "#bfa14a",
+                                opacity: 0.8,
+                                transition: "opacity 0.2s",
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.opacity = 1)}
+                            onMouseLeave={(e) => (e.currentTarget.style.opacity = 0.8)}
+                        >
+                            {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
+                        </span>
                     </div>
 
+                    {/* MENSAGEM DE ERRO */}
                     {error && <p className="error-message">{error}</p>}
 
+                    {/* BOTÃO */}
                     <button type="submit" className="barber-button" disabled={loading}>
                         <span>{loading ? "Entrando..." : "Entrar"}</span>
                     </button>
