@@ -66,6 +66,7 @@ export default function AdminPage() {
                 servicoNome: a.servico?.nome || "Serviço",
                 clienteNome: a.cliente?.nome || "N/A",
                 proprietarioNome: a.proprietario?.nome || "N/A",
+                telefoneNome: a.cliente?.telefone || "N/A",
                 dataHora: a.dataHora,
                 precoFinal: a.precoFinal ?? 0,
                 observacoes: a.observacao ?? "",
@@ -189,6 +190,10 @@ export default function AdminPage() {
                                 <div className="detail-row">
                                     <span className="detail-label">Barbeiro:</span>
                                     <span className="detail-value">{ag.proprietarioNome}</span>
+                                </div>
+                                <div className="detail-row">
+                                    <span className="detail-label">Telefone:</span>
+                                    <span className="detail-value">{ag.telefoneNome}</span>
                                 </div>
                                 <div className="detail-row">
                                     <span className="detail-label">Data:</span>

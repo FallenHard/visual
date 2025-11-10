@@ -1121,3 +1121,37 @@
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
 }
+
+.dashboard-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* centraliza o título */
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Centraliza o bloco de título e subtítulo */
+.dashboard-header-center {
+    text-align: center;
+}
+
+/* Botão fixo no canto direito superior */
+.logout-button {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    background-color: #3b2121;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #e6d7d7;
+}

@@ -74,6 +74,10 @@ export default function Dashboard() {
         setTimeout(() => setToastMessage(""), 3000)
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem("token") // remove o token do usuário
+        router.push("/login") // redireciona para a tela de login
+    }
     // 🔹 Verifica se horário está ocupado
     const horarioOcupado = (horario) => {
         if (!formData.proprietarioId) return false
@@ -102,6 +106,12 @@ export default function Dashboard() {
         if (!token) {
             mostrarToast("⚠️ Você precisa estar logado para agendar.")
             return
+        }
+
+        // 🔹 Função de logout
+        const handleLogout = () => {
+            localStorage.removeItem("token") // apaga o token
+            router.push("/login") // redireciona para o login
         }
 
         const servicoSelecionado = servicos.find((s) => s.id === parseInt(formData.servicoId))
@@ -259,9 +269,18 @@ export default function Dashboard() {
     return (
         <div className="dashboard-container">
             <div className="dashboard-header">
-                <h1 className="dashboard-title">Agendamentos</h1>
-                <p className="dashboard-subtitle">Agende seu horário com os melhores profissionais</p>
+                <div className="dashboard-header-left">
+                    <h1 className="dashboard-title">Agendamentos</h1>
+                    <p className="dashboard-subtitle">Agende seu horário com os melhores profissionais</p>
+                </div>
+
+                <div className="dashboard-header-right">
+                    <button className="logout-button" onClick={handleLogout}>
+                        Sair
+                    </button>
+                </div>
             </div>
+
 
             <div className="dashboard-tabs">
                 <button className={`tab-button ${activeTab === "novo" ? "active" : ""}`} onClick={() => setActiveTab("novo")}>Novo Agendamento</button>

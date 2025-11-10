@@ -1,0 +1,1535 @@
+/*!************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/barber.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    min-height: 100vh;
+}
+
+/* Container principal com tema de barbearia */
+.barber-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    position: relative;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.barber-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(218, 165, 32, 0.1) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* Card principal */
+.barber-card {
+    background: rgba(30, 30, 30, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem 2rem;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(218, 165, 32, 0.2);
+    position: relative;
+    z-index: 1;
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+/* Logo e branding */
+.barber-logo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+}
+
+.scissors-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 10px rgba(218, 165, 32, 0.5));
+}
+
+.barber-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #daa520;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 2px 10px rgba(218, 165, 32, 0.3);
+}
+
+.barber-subtitle {
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* Textos de boas-vindas */
+.welcome-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+    font-size: 0.9rem;
+    color: #999;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Formulário */
+.barber-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    color: #daa520;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.barber-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(218, 165, 32, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.barber-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.barber-input:focus {
+    outline: none;
+    border-color: #daa520;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
+}
+
+/* Botão premium */
+.barber-button {
+    width: 100%;
+    padding: 0.875rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(135deg, #daa520 0%, #b8860b 100%);
+    border: none;
+    border-radius: 10px;
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.barber-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.barber-button:hover::before {
+    left: 100%;
+}
+
+.barber-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(218, 165, 32, 0.4);
+}
+
+.barber-button:active {
+    transform: translateY(0);
+}
+
+.barber-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.barber-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mensagens */
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 107, 0.2);
+}
+
+.success-message {
+    color: #51cf66;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(81, 207, 102, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(81, 207, 102, 0.2);
+}
+
+/* Footer */
+.footer-text {
+    text-align: center;
+    color: #999;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+}
+
+.footer-link {
+    color: #daa520;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .barber-card {
+        padding: 1.5rem 1.25rem;
+        margin: 0.5rem;
+        max-height: 98vh;
+    }
+
+    .barber-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.15em;
+    }
+
+    .scissors-icon {
+        font-size: 2rem;
+    }
+
+    .welcome-text {
+        font-size: 1.25rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .barber-logo {
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .barber-form {
+        gap: 0.875rem;
+    }
+
+    .barber-input {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    .barber-button {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-text {
+        font-size: 0.8rem;
+        margin-top: 0.875rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .barber-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .barber-title {
+        font-size: 1.25rem;
+    }
+
+    .welcome-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .barber-card {
+        max-height: none;
+        padding: 1rem 2rem;
+    }
+
+    .barber-logo {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .scissors-icon {
+        font-size: 1.75rem;
+    }
+
+    .barber-title {
+        font-size: 1.25rem;
+    }
+
+    .welcome-text {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .welcome-subtitle {
+        margin-bottom: 1rem;
+    }
+
+    .barber-form {
+        gap: 0.75rem;
+    }
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/dashboard.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************/
+.dashboard-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 100%);
+    padding: 2rem 1rem;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.5rem;
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.dashboard-subtitle {
+    color: #999;
+    font-size: 1rem;
+}
+
+.dashboard-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 0.75rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #999;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.tab-button:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    border-color: #d4af37;
+    font-weight: 600;
+}
+
+.dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.booking-grid {
+    display: grid;
+    grid-gap: 2rem;
+    gap: 2rem;
+}
+
+.booking-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.booking-section.full-width {
+    grid-column: 1 / -1;
+}
+
+.section-title {
+    font-family: "Playfair Display", serif;
+    color: #d4af37;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Serviços */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    gap: 1rem;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+.service-card.selected {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.2) 100%);
+    border-color: #d4af37;
+}
+
+.service-card h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.service-price {
+    color: #d4af37;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.service-duration {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Barbeiros */
+.barbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 1rem;
+    gap: 1rem;
+}
+
+.barber-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.barber-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+}
+
+.barber-card.selected {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.2) 100%);
+    border-color: #d4af37;
+}
+
+.barber-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0 auto 1rem;
+}
+
+.barber-card h3 {
+    color: #fff;
+    font-size: 1rem;
+}
+
+/* Calendário */
+.calendar-container {
+    width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-header h3 {
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+}
+
+.calendar-nav {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #d4af37;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.calendar-nav:hover {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0.5rem;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.weekday {
+    text-align: center;
+    color: #d4af37;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0.5rem;
+    gap: 0.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.calendar-day:hover:not(.empty):not(.past) {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: #d4af37;
+}
+
+.calendar-day.selected {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    font-weight: 700;
+    border-color: #d4af37;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    border: none;
+    cursor: default;
+}
+
+.calendar-day.past {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Horários */
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-gap: 0.75rem;
+    gap: 0.75rem;
+}
+
+.time-slot {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.time-slot:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: #d4af37;
+}
+
+.time-slot.selected {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    font-weight: 600;
+    border-color: #d4af37;
+}
+
+/* Textarea */
+.barber-textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.barber-textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* Lista de Agendamentos */
+.appointments-list {
+    display: grid;
+    grid-gap: 1.5rem;
+    gap: 1.5rem;
+}
+
+.appointment-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.appointment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.appointment-header h3 {
+    color: #d4af37;
+    font-size: 1.3rem;
+}
+
+.status-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge.confirmed {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid #22c55e;
+}
+
+.status-badge.pending {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+    border: 1px solid #eab308;
+}
+
+.appointment-details p {
+    color: #ccc;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.appointment-details strong {
+    color: #d4af37;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+    font-size: 1.1rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .dashboard-title {
+        font-size: 2rem;
+    }
+
+    .services-grid,
+    .barbers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .time-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .calendar-day {
+        font-size: 0.8rem;
+    }
+
+    .weekday {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .booking-section {
+        padding: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .time-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Botão Admin Flutuante */
+.admin-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.admin-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+    background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+}
+
+.admin-button:active {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .admin-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.1) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #ffd700;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    z-index: 9999;
+    animation: fadeSlideUp 0.4s ease forwards, fadeOut 0.4s ease 2.6s forwards;
+    text-align: center;
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* 🔹 Calendário reduzido e centralizado */
+/* 🔹 Tamanho equilibrado do calendário */
+.fixed-calendar {
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+/* Ajuste de zoom em telas grandes */
+@media (min-width: 1024px) {
+    .fixed-calendar {
+        transform: scale(1.05);
+        transform-origin: top center;
+    }
+}
+
+/* 🔹 Horário desativado corretamente */
+.time-slot.disabled {
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #f87171;
+    cursor: not-allowed !important;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.time-slot.disabled {
+    background: rgba(255, 50, 50, 0.15);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    color: #ff6666;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* 🔹 Seção de Gerenciamento de Serviços */
+.servico-add-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.servico-form {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.servico-form input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    color: #fff;
+    font-size: 0.95rem;
+    width: 220px;
+    transition: all 0.3s ease;
+}
+
+.servico-form input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    outline: none;
+}
+
+/* 🔹 Botão Adicionar Serviço */
+.adicionar-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.adicionar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(212, 175, 55, 0.5);
+}
+
+/* 🔹 Lista de serviços */
+.servicos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-gap: 1rem;
+    gap: 1rem;
+}
+
+.servico-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.servico-card:hover {
+    transform: translateY(-3px);
+    border-color: #d4af37;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+
+.servico-card h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.servico-card .preco {
+    color: #d4af37;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* 🔹 Grupo de botões */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.concluir-btn,
+.excluir-btn {
+    flex: 1 1;
+    min-width: 90px;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ✅ Botão Editar */
+.concluir-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.concluir-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* ❌ Botão Excluir */
+.excluir-btn {
+    background: linear-gradient(135deg, #ff5555 0%, #cc3333 100%);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(255, 50, 50, 0.3);
+}
+
+.excluir-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 50, 50, 0.5);
+}
+
+/* 🔹 Modal de edição */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #111;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+    text-align: center;
+}
+
+.modal-box h3 {
+    color: #d4af37;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cancelar-btn,
+.confirmar-btn {
+    flex: 1 1;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* ❌ Cancelar */
+.cancelar-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cancelar-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ✅ Confirmar */
+.confirmar-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    font-weight: 700;
+}
+
+.confirmar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+}
+
+.adicionar-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.add-service-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.add-service-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+}
+
+/* 🔹 Ações dentro do card de serviço */
+.service-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.concluir-btn,
+.excluir-btn {
+    flex: 1 1;
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ✏️ Editar */
+.concluir-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.concluir-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+}
+
+/* 🗑️ Excluir */
+.excluir-btn {
+    background: linear-gradient(135deg, #ff4e4e 0%, #b80000 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.excluir-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+}
+
+/* 🔹 Modal (reutilizado para adicionar e editar) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #111;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+    text-align: center;
+}
+
+.modal-box h3 {
+    color: #d4af37;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.modal-box input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    outline: none;
+}
+
+/* Botões dentro da modal */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cancelar-btn,
+.confirmar-btn {
+    flex: 1 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Cancelar */
+.cancelar-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ccc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cancelar-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Confirmar */
+.confirmar-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.confirmar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+}
+
+/* 🔹 Responsividade */
+@media (max-width: 600px) {
+    .service-actions {
+        flex-direction: column;
+    }
+
+    .add-service-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1.4rem;
+    }
+
+    .modal-box {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+.add-service-btn-inside {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.add-service-btn-inside:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+}
+
+/* 🔹 Ações dentro do card de serviço */
+.service-actions {
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
+/* 🗑️ Excluir */
+.service-actions {
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
+/* 🗑️ Ícone de lixeira minimalista */
+.excluir-btn {
+    background: linear-gradient(135deg, #ff4e4e 0%, #b80000 100%);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(255, 0, 0, 0.25);
+}
+
+.excluir-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+}
+
+/* 🔹 Botão + dentro da seção de serviços */
+.add-service-btn-inside {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+}
+
+.add-service-btn-inside:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+}
+
+/* 🔹 Responsividade */
+@media (max-width: 600px) {
+    .excluir-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .add-service-btn-inside {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+}
+
+.delete-icon-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ff5555;
+    font-size: 0.9rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.delete-icon-btn:hover {
+    background: rgba(255, 0, 0, 0.25);
+    border-color: rgba(255, 0, 0, 0.5);
+    color: #ff7777;
+    transform: scale(1.1);
+}
+
+/* 🔹 Responsivo */
+@media (max-width: 600px) {
+    .delete-icon-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+        top: 6px;
+        right: 6px;
+    }
+}
+
+.modal-delete {
+    border: 1px solid rgba(255, 80, 80, 0.5);
+    background: linear-gradient(145deg, #0e0e0e 0%, #1b1513 100%);
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 8px 35px rgba(255, 50, 50, 0.2);
+    animation: zoomIn 0.25s ease;
+}
+
+.modal-delete h3 {
+    color: #ff5555;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.modal-delete p {
+    color: #ddd;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Botões do modal */
+.cancelar-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #d4af37;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancelar-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.delete-confirm {
+    background: linear-gradient(135deg, #ff4e4e 0%, #b80000 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+    transition: all 0.25s ease;
+}
+
+.delete-confirm:hover {
+    background: linear-gradient(135deg, #ff6b6b 0%, #d40000 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+}
+
+.dashboard-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* centraliza o título */
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Centraliza o bloco de título e subtítulo */
+.dashboard-header-center {
+    text-align: center;
+}
+
+/* Botão fixo no canto direito superior */
+.logout-button {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    background-color: #3b2121;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #e6d7d7;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/globals.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+/* src/globals.css */
+
+/* Reset e fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #fff;
+}
