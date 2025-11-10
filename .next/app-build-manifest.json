@@ -17,6 +17,22 @@
       "static/css/30ca666b7c484ea0.css",
       "static/chunks/app/layout-dac3e7fb25485c7b.js"
     ],
+    "/page": [
+      "static/chunks/webpack-1a6d75351b972dd1.js",
+      "static/chunks/fd9d1056-9f91b5e418130764.js",
+      "static/chunks/117-36a8ed0a82415c85.js",
+      "static/chunks/main-app-a6d9f1316f978810.js",
+      "static/chunks/app/page-5c7f001e1908542e.js"
+    ],
+    "/dashboard/page": [
+      "static/chunks/webpack-1a6d75351b972dd1.js",
+      "static/chunks/fd9d1056-9f91b5e418130764.js",
+      "static/chunks/117-36a8ed0a82415c85.js",
+      "static/chunks/main-app-a6d9f1316f978810.js",
+      "static/css/464034e805297a77.css",
+      "static/css/589fe58f1f69e244.css",
+      "static/chunks/app/dashboard/page-8e315b3cfa114ef5.js"
+    ],
     "/admin/agendamentos/page": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
       "static/chunks/fd9d1056-9f91b5e418130764.js",
@@ -33,23 +49,6 @@
       "static/css/464034e805297a77.css",
       "static/chunks/app/login/page-884b97d90283e6e0.js"
     ],
-    "/dashboard/page": [
-      "static/chunks/webpack-1a6d75351b972dd1.js",
-      "static/chunks/fd9d1056-9f91b5e418130764.js",
-      "static/chunks/117-36a8ed0a82415c85.js",
-      "static/chunks/main-app-a6d9f1316f978810.js",
-      "static/css/464034e805297a77.css",
-      "static/css/589fe58f1f69e244.css",
-      "static/chunks/app/dashboard/page-8e315b3cfa114ef5.js"
-    ],
-    "/telaAdmin/page": [
-      "static/chunks/webpack-1a6d75351b972dd1.js",
-      "static/chunks/fd9d1056-9f91b5e418130764.js",
-      "static/chunks/117-36a8ed0a82415c85.js",
-      "static/chunks/main-app-a6d9f1316f978810.js",
-      "static/css/4c064182793ba6aa.css",
-      "static/chunks/app/telaAdmin/page-fb5de030655222b2.js"
-    ],
     "/register/page": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
       "static/chunks/fd9d1056-9f91b5e418130764.js",
@@ -58,12 +57,13 @@
       "static/css/464034e805297a77.css",
       "static/chunks/app/register/page-ad217d3da6418d86.js"
     ],
-    "/page": [
+    "/telaAdmin/page": [
       "static/chunks/webpack-1a6d75351b972dd1.js",
       "static/chunks/fd9d1056-9f91b5e418130764.js",
       "static/chunks/117-36a8ed0a82415c85.js",
       "static/chunks/main-app-a6d9f1316f978810.js",
-      "static/chunks/app/page-5c7f001e1908542e.js"
+      "static/css/4c064182793ba6aa.css",
+      "static/chunks/app/telaAdmin/page-fb5de030655222b2.js"
     ]
   }
 }

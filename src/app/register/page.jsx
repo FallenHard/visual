@@ -3,7 +3,7 @@
 import { useState } from "react"
 import "../../barber.css"
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://localhost:7037"
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
 
 
 function Register() {

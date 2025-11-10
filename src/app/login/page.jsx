@@ -3,7 +3,7 @@
 import { useState } from "react"
 import "../../barber.css"
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5069"
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
 
 export default function Login() {
     const [email, setEmail] = useState("")
