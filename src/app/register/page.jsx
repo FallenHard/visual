@@ -86,7 +86,7 @@ function Register() {
                     <div className="form-group">
                         <label className="form-label">Telefone</label>
                         <input
-                            type="email"
+                            type="number"
                             className="barber-input"
                             placeholder="Seu telefone:"
                             value={telefone}
