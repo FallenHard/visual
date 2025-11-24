@@ -48,7 +48,7 @@ export default function Login() {
                     <p className="barber-subtitle">Estilo e Tradição</p>
                 </div>
 
-                <h2 className="welcome-text">Bem-vindo de volta</h2>
+                <h2 className="welcome-text">Bem-vindo</h2>
                 <p className="welcome-subtitle">Faça login para acessar sua conta</p>
 
                 <form onSubmit={handleSubmit} className="barber-form">
