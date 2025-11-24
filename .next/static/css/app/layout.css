@@ -1658,6 +1658,360 @@ body {
     box-shadow: 0 6px 20px rgba(74, 144, 226, 0.6);
     /* Sombra hover Azul */
 }
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    /* Espaça os itens: título à esquerda, menu à direita */
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    /* Aumenta o padding para melhor espaçamento */
+    position: relative;
+    /* Para o posicionamento absoluto da engrenagem */
+    z-index: 10;
+}
+
+.dashboard-header-left {
+    text-align: left;
+}
+
+.dashboard-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.8rem;
+    /* Aumentado para mais destaque */
+    color: #4A90E2;
+    /* Azul vibrante */
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 15px rgba(74, 144, 226, 0.4);
+    /* Sombra para profundidade */
+}
+
+.dashboard-subtitle {
+    font-size: 1.1rem;
+    color: #bbbbbb;
+    /* Cinza mais claro */
+}
+
+
+/* --- NOVO ESTILO DO MENU DE CONFIGURAÇÕES/LOGOUT --- */
+
+.dashboard-header-right {
+    /* Remove o position: relative e display: flex daqui */
+    /* Será posicionado absolutamente dentro de .dashboard-header */
+    position: absolute;
+    /* Posição absoluta em relação ao .dashboard-header */
+    top: 1.5rem;
+    /* Alinha com o padding superior do header */
+    right: 2rem;
+    /* Alinha com o padding direito do header */
+    z-index: 20;
+    /* Garante que fique acima de outros elementos */
+}
+
+.settings-menu-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Para o botão de logout se posicionar em relação a este wrapper */
+}
+
+/* Estilo do Ícone da Engrenagem */
+.settings-icon-btn {
+    background: rgba(74, 144, 226, 0.1);
+    /* Fundo sutil azulado */
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    /* Borda fina */
+    cursor: pointer;
+    font-size: 1.8rem;
+    /* Tamanho maior */
+    color: #4A90E2;
+    /* Cor azul */
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    padding: 0.7rem;
+    /* Aumenta o padding */
+    border-radius: 50%;
+    /* Torna-o um círculo perfeito */
+    display: flex;
+    /* Para centralizar o ícone */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.2);
+    /* Sombra suave */
+}
+
+/* Animação de rotação ao abrir */
+.settings-icon-btn.open {
+    transform: rotate(90deg);
+    background-color: rgba(74, 144, 226, 0.2);
+    /* Fundo um pouco mais escuro ao abrir */
+}
+
+.settings-icon-btn:hover {
+    color: #76B9ED;
+    /* Azul mais claro no hover */
+    background-color: rgba(74, 144, 226, 0.15);
+    /* Fundo um pouco mais claro no hover */
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.4);
+    /* Sombra mais intensa no hover */
+}
+
+/* Container do Botão de Sair (o 'drawer' que desliza) */
+.logout-drawer {
+    position: absolute;
+    right: calc(100% + 15px);
+    /* Posiciona à esquerda do ícone com um espaçamento */
+    transform: translateX(10px);
+    /* Ajuste inicial para a animação */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Animação suave */
+    display: flex;
+    align-items: center;
+    height: 100%;
+    /* Garante que o alinhamento vertical com a engrenagem seja mantido */
+}
+
+/* Estado Aberto (Aparece) */
+.logout-drawer.open {
+    transform: translateX(0);
+    /* Move para a posição final */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilo do Botão Sair */
+.logout-button {
+    padding: 10px 18px;
+    /* Aumenta o padding */
+    background-color: #ff4d4f;
+    /* Cor vermelha para Sair */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    /* Levemente maior */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    box-shadow: 0 4px 15px rgba(255, 77, 79, 0.3);
+    /* Sombra sutil */
+}
+
+.logout-button:hover {
+    background-color: #ff7875;
+    transform: translateY(-2px);
+    /* Efeito de "levantar" */
+    box-shadow: 0 6px 20px rgba(255, 77, 79, 0.4);
+}
+
+/* --- FIM DOS ESTILOS DO MENU DE CONFIGURAÇÕES/LOGOUT --- */
+
+
+/* Adicione ou ajuste esta media query para telas menores, se necessário */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        /* Empilha os itens em telas menores */
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .dashboard-header-right {
+        position: static;
+        /* Volta a ser posicionado normalmente no fluxo */
+        margin-top: 1rem;
+        /* Espaço entre o título e o menu */
+        align-self: flex-end;
+        /* Alinha o menu à direita dentro da coluna */
+        top: auto;
+        right: auto;
+    }
+
+    .settings-menu-wrapper {
+        justify-content: flex-end;
+        /* Alinha a engrenagem à direita no wrapper */
+        width: 100%;
+    }
+
+    .logout-drawer {
+        right: calc(100% + 10px);
+        /* Ajusta a posição para telas menores */
+    }
+}
+
+/* ... (Seu CSS existente) ... */
+
+/* Estilos para o novo Header e centralização */
+.dashboard-header.new-header {
+    /* Remove o justify-content: center e alinha os itens para os lados */
+    display: flex;
+    justify-content: space-between;
+    /* Alinha o centro no meio e o hambúrguer na direita */
+    align-items: center;
+    width: 100%;
+    padding: 0 1.5rem;
+    /* Adiciona algum padding lateral */
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+.dashboard-header-center {
+    /* Centraliza o texto */
+    text-align: center;
+    /* Faz o bloco central ocupar o espaço restante, forçando o centro visualmente */
+    flex-grow: 1;
+    margin-right: 2rem;
+    /* Espaço para não colidir com o menu */
+}
+
+/* Garante que o texto dentro do bloco central fique centralizado */
+.dashboard-header-center .dashboard-title,
+.dashboard-header-center .dashboard-subtitle {
+    text-align: center;
+}
+
+
+/* Centraliza as abas (agora só tem "Novo Agendamento") */
+.dashboard-tabs.centered-tabs {
+    justify-content: center;
+}
+
+/* ------------------------------------- */
+/* NOVO ESTILO: Menu Hambúrguer (Drawer) */
+/* ------------------------------------- */
+
+.hamburger-menu-wrapper {
+    position: relative;
+    /* Ocupa um espaço definido para o ícone */
+    width: 35px;
+    height: 35px;
+    z-index: 1000;
+    /* Garante que fique por cima de tudo */
+}
+
+.hamburger-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.hamburger-icon div {
+    width: 30px;
+    height: 3px;
+    background-color: #4A90E2;
+    /* Cor azul do menu */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    margin: 4px 0;
+    /* Espaçamento entre as barras */
+}
+
+/* Estilos para quando o menu está aberto */
+.hamburger-icon-btn.open .hamburger-icon div:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-icon-btn.open .hamburger-icon div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon-btn.open .hamburger-icon div:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* O Drawer (o menu que desliza) */
+.menu-drawer {
+    position: absolute;
+    top: 100%;
+    /* Começa abaixo do ícone */
+    right: 0;
+    width: 250px;
+    /* Largura do menu */
+    background: #1A3A5A;
+    /* Fundo escuro do menu */
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+.menu-drawer.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-item {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(74, 144, 226, 0.1);
+    color: #4A90E2;
+}
+
+.menu-item.active {
+    color: #fff;
+    font-weight: bold;
+    background-color: rgba(74, 144, 226, 0.2);
+}
+
+.menu-item.admin-link {
+    color: #76B9ED;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+}
+
+/* Correção para o botão de Adicionar Serviço aparecer corretamente no Service Section */
+.service-section {
+    padding-top: 2.5rem;
+    /* Aumenta o padding para acomodar o botão + */
+}
+
+.add-service-btn-inside {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    /* ... (Mantenha o resto dos seus estilos para este botão) ... */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 /*!*************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/globals.css ***!
   \*************************************************************************************************************************************************************************************************************************************************************/

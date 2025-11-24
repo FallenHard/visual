@@ -9,6 +9,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrend
 
 
 export default function Dashboard() {
+    // ALTERAÇÃO: Inicializa como "novo"
     const [activeTab, setActiveTab] = useState("novo")
     const [servicos, setServicos] = useState([])
     const [barbeiros, setBarbeiros] = useState([])
@@ -16,6 +17,9 @@ export default function Dashboard() {
     const [role, setRole] = useState("")
     const [toastMessage, setToastMessage] = useState("")
     const router = useRouter()
+
+    // 🌟 NOVO ESTADO: Controla a abertura do menu hambúrguer/configurações
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
     const [formData, setFormData] = useState({
         servicoId: "",
@@ -78,6 +82,13 @@ export default function Dashboard() {
         localStorage.removeItem("token") // remove o token do usuário
         router.push("/login") // redireciona para a tela de login
     }
+
+    // NOVO: Função para mudar para Meus Agendamentos e fechar o menu
+    const handleMeusAgendamentos = () => {
+        setActiveTab("meus")
+        setIsSettingsOpen(false)
+    }
+
     // 🔹 Verifica se horário está ocupado
     const horarioOcupado = (horario) => {
         if (!formData.proprietarioId) return false
@@ -106,12 +117,6 @@ export default function Dashboard() {
         if (!token) {
             mostrarToast("⚠️ Você precisa estar logado para agendar.")
             return
-        }
-
-        // 🔹 Função de logout
-        const handleLogout = () => {
-            localStorage.removeItem("token") // apaga o token
-            router.push("/login") // redireciona para o login
         }
 
         const servicoSelecionado = servicos.find((s) => s.id === parseInt(formData.servicoId))
@@ -268,23 +273,57 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard-container">
-            <div className="dashboard-header">
-                <div className="dashboard-header-left">
+            {/* NOVO HEADER: Focado em centralização e menu hambúrguer */}
+            <div className="dashboard-header new-header">
+                <div className="dashboard-header-center">
                     <h1 className="dashboard-title">Agendamentos</h1>
                     <p className="dashboard-subtitle">Agende seu horário com os melhores profissionais</p>
                 </div>
 
                 <div className="dashboard-header-right">
-                    <button className="logout-button" onClick={handleLogout}>
-                        Sair
-                    </button>
+                    <div className="hamburger-menu-wrapper">
+                        <button
+                            className={`hamburger-icon-btn ${isSettingsOpen ? 'open' : ''}`}
+                            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+                            aria-label="Menu de Opções"
+                        >
+                            {/* Ícone Hambúrguer (pode ser um ícone de três barras, como no seu print) */}
+                            {/* Você pode substituir este texto por um componente de ícone real (SVG/Image) para o melhor visual */}
+                            <div className="hamburger-icon">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </button>
+                        <div className={`menu-drawer ${isSettingsOpen ? 'open' : ''}`}>
+                            <button
+                                className={`menu-item ${activeTab === "meus" ? "active" : ""}`}
+                                onClick={handleMeusAgendamentos}
+                            >
+                                Meus Agendamentos
+                            </button>
+                            <button className="menu-item" onClick={handleLogout}>
+                                Sair
+                            </button>
+                            {role === "Proprietario" && (
+                                <button className="menu-item admin-link" onClick={() => router.push("/admin/agendamentos")}>
+                                    📋 Ver Todos (Admin)
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
 
-
-            <div className="dashboard-tabs">
-                <button className={`tab-button ${activeTab === "novo" ? "active" : ""}`} onClick={() => setActiveTab("novo")}>Novo Agendamento</button>
-                <button className={`tab-button ${activeTab === "meus" ? "active" : ""}`} onClick={() => setActiveTab("meus")}>Meus Agendamentos</button>
+            {/* NOVO BLOCO DE ABAS: Apenas "Novo Agendamento" fica aqui */}
+            <div className="dashboard-tabs centered-tabs">
+                <button
+                    className={`tab-button ${activeTab === "novo" ? "active" : ""}`}
+                    onClick={() => { setActiveTab("novo"); setIsSettingsOpen(false); }}
+                >
+                    Novo Agendamento
+                </button>
+                {/* O botão "Meus Agendamentos" foi movido para o menu hambúrguer */}
             </div>
 
             {activeTab === "novo" ? (
@@ -367,7 +406,7 @@ export default function Dashboard() {
                             )}
                         </div>
 
-                        {/* Modal de Novo Serviço */}
+                        {/* Modal de Novo Serviço (duplicado no original, mantendo para consistência) */}
                         {mostrarModalServico && (
                             <div className="modal-overlay">
                                 <div className="modal-box">
@@ -514,11 +553,8 @@ export default function Dashboard() {
                 </div>
             )}
 
-            {role === "Proprietario" && (
-                <button className="admin-button" onClick={() => router.push("/admin/agendamentos")}>
-                    📋 Ver Todos (Admin)
-                </button>
-            )}
+            {/* O botão "Ver Todos (Admin)" foi movido para o menu hambúrguer para manter o foco na centralização */}
+
 
             {toastMessage && <div className="toast">{toastMessage}</div>}
         </div>

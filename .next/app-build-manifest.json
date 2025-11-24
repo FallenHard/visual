@@ -23,12 +23,6 @@
       "static/css/app/dashboard/page.css",
       "static/chunks/app/dashboard/page.js"
     ],
-    "/admin/agendamentos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/admin/agendamentos/page.css",
-      "static/chunks/app/admin/agendamentos/page.js"
-    ],
     "/register/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
