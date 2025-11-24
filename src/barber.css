@@ -76,8 +76,10 @@ body {
 }
 
 .logo-image {
-    /* 🚀 VALOR AUMENTADO PARA 380px */
-    width: 380px;
+    /* 🚀 VALOR CORRIGIDO: Usa 90% da largura disponível para ser RESPONSIVO em celulares */
+    width: 90%;
+    max-width: 380px;
+    /* Limite o tamanho máximo para telas grandes */
     height: auto;
     margin: 0 auto;
     display: block;
