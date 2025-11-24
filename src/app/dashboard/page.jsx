@@ -16,8 +16,10 @@ export default function Dashboard() {
     const [agendamentos, setAgendamentos] = useState([])
     const [role, setRole] = useState("")
     const [toastMessage, setToastMessage] = useState("")
+    const [loading, setLoading] = useState(true);
     const router = useRouter()
-
+    const [mostrarModalExcluirAg, setMostrarModalExcluirAg] = useState(false);
+    const [agendamentoParaExcluir, setAgendamentoParaExcluir] = useState(null);
     // 🌟 NOVO ESTADO: Controla a abertura do menu hambúrguer/configurações
     const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
@@ -38,9 +40,10 @@ export default function Dashboard() {
     const [servicoEditando, setServicoEditando] = useState(null)
 
     const horariosDisponiveis = [
-        "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
-        "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
-        "17:00", "17:30", "18:00", "18:30"
+        "09:00", "10:00",
+        "14:40", "15:00", "16:00",
+        "17:00", "18:00",
+        "19:00", "20:00"
     ]
 
     useEffect(() => {
@@ -48,30 +51,34 @@ export default function Dashboard() {
     }, [])
 
     const carregarDados = async () => {
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("token");
         if (!token) {
-            router.push("/login")
-            return
+            router.push("/login");
+            return;
         }
 
         try {
-            const decoded = JSON.parse(atob(token.split(".")[1]))
-            const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || ""
-            setRole(userRole)
+            const decoded = JSON.parse(atob(token.split(".")[1]));
+            const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || "";
+            setRole(userRole);
 
             const [servicosRes, barbeirosRes, agRes] = await Promise.all([
                 fetch(`${API_URL}/api/Servicos/todos`, { headers: { Authorization: `Bearer ${token}` } }),
                 fetch(`${API_URL}/api/Proprietarios/todos`, { headers: { Authorization: `Bearer ${token}` } }),
                 fetch(`${API_URL}/api/Agendamento/todos`, { headers: { Authorization: `Bearer ${token}` } }),
-            ])
+            ]);
 
-            if (servicosRes.ok) setServicos(await servicosRes.json())
-            if (barbeirosRes.ok) setBarbeiros(await barbeirosRes.json())
-            if (agRes.ok) setAgendamentos(await agRes.json())
+            if (servicosRes.ok) setServicos(await servicosRes.json());
+            if (barbeirosRes.ok) setBarbeiros(await barbeirosRes.json());
+            if (agRes.ok) setAgendamentos(await agRes.json());
+
         } catch (error) {
-            console.error("Erro ao carregar dados:", error)
+            console.error("Erro ao carregar dados:", error);
         }
-    }
+
+        // 🔥 IMPORTANTE: desliga o loading quando TUDO terminar
+        setLoading(false);
+    };
 
     const mostrarToast = (msg) => {
         setToastMessage(msg)
@@ -123,7 +130,20 @@ export default function Dashboard() {
         if (!servicoSelecionado) return mostrarToast("⚠️ Selecione um serviço válido.")
         if (!selectedTime) return mostrarToast("⚠️ Selecione um horário válido.")
 
-        const dataHoraCompleta = `${selectedDate.toISOString().split("T")[0]}T${selectedTime}:00Z`
+        const [h, m] = selectedTime.split(":").map(Number);
+
+        const dataLocal = new Date(
+            selectedDate.getFullYear(),
+            selectedDate.getMonth(),
+            selectedDate.getDate(),
+            h,
+            m,
+            0
+        );
+
+        // Formato: YYYY-MM-DDTHH:mm:ss (sem Z)
+        const dataHoraCompleta = dataLocal.toISOString().replace("Z", "");
+
         const agendamentoDto = {
             proprietarioId: parseInt(formData.proprietarioId),
             servicoId: parseInt(formData.servicoId),
@@ -208,6 +228,28 @@ export default function Dashboard() {
         }
     }
 
+    const excluirAgendamento = async (id) => {
+        const token = localStorage.getItem("token")
+
+        try {
+            const res = await fetch(`${API_URL}/api/Agendamento/${id}`, {
+                method: "DELETE",
+                headers: { Authorization: `Bearer ${token}` },
+            })
+
+            if (res.ok) {
+                mostrarToast("🗑️ Agendamento excluído!")
+                carregarDados()
+            } else {
+                mostrarToast("❌ Erro ao excluir agendamento.")
+            }
+
+        } catch (error) {
+            console.error(error)
+            mostrarToast("❌ Erro ao conectar ao servidor.")
+        }
+    }
+
     const salvarEdicaoServico = async (e) => {
         e.preventDefault()
         const token = localStorage.getItem("token")
@@ -231,29 +273,61 @@ export default function Dashboard() {
     }
     const renderCalendario = () => {
         const hoje = new Date()
+        // 1. Dias da semana voltam a incluir o Domingo
         const diasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
+
         const primeiroDia = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1)
         const ultimoDia = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0)
         const dias = []
-        const diaInicial = primeiroDia.getDay()
 
-        for (let i = 0; i < diaInicial; i++)
+        // Obtém o dia da semana do primeiro dia (0=Dom, 1=Seg, ..., 6=Sáb)
+        let diaInicial = primeiroDia.getDay()
+
+        // 2. Reverte o cálculo do offset para o padrão (Domingo = 0, Segunda = 1)
+        // Se for Domingo (0), o offset é 0
+        let offset = diaInicial;
+
+        for (let i = 0; i < offset; i++)
             dias.push(<div key={`empty-${i}`} className="calendar-day empty"></div>)
+
+        const dataHoje = new Date();
+        dataHoje.setHours(0, 0, 0, 0);
 
         for (let dia = 1; dia <= ultimoDia.getDate(); dia++) {
             const dataAtual = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), dia)
+
+            // ** NOVA LÓGICA: Checa se é Domingo **
+            const isDomingo = dataAtual.getDay() === 0;
+
             const isSelected = dataAtual.toDateString() === selectedDate.toDateString()
-            const isPast = dataAtual < hoje.setHours(0, 0, 0, 0)
+            const isPast = dataAtual.getTime() < dataHoje.getTime();
+
+            // Define se o dia está desativado (se for passado OU Domingo)
+            const isDisabled = isPast || isDomingo;
 
             dias.push(
                 <div
                     key={dia}
-                    className={`calendar-day ${isSelected ? "selected" : ""} ${isPast ? "past" : ""}`}
-                    onClick={() => !isPast && setSelectedDate(dataAtual)}
+                    // Adiciona a classe 'disabled-day' se for desativado
+                    className={`calendar-day 
+                    ${isSelected ? "selected" : ""} 
+                    ${isPast ? "past" : ""} 
+                    ${isDomingo ? "disabled-day" : ""}`
+                    }
+                    // O onClick só é executado se NÃO estiver desativado
+                    onClick={() => !isDisabled && setSelectedDate(dataAtual)}
                 >
                     {dia}
                 </div>
             )
+        }
+
+        if (loading) {
+            return (
+                <div className="loading-container">
+                    <div className="spinner"></div>
+                </div>
+            );
         }
 
         return (
@@ -266,9 +340,18 @@ export default function Dashboard() {
                 <div className="calendar-weekdays">
                     {diasSemana.map((dia) => <div key={dia} className="weekday">{dia}</div>)}
                 </div>
+                {/* O grid agora deve ter 7 colunas, já que o Domingo está de volta */}
                 <div className="calendar-grid">{dias}</div>
             </div>
         )
+    }
+
+    if (loading) {
+        return (
+            <div className="loading-container">
+                <div className="spinner"></div>
+            </div>
+        );
     }
 
     return (
@@ -296,12 +379,6 @@ export default function Dashboard() {
                             </div>
                         </button>
                         <div className={`menu-drawer ${isSettingsOpen ? 'open' : ''}`}>
-                            <button
-                                className={`menu-item ${activeTab === "meus" ? "active" : ""}`}
-                                onClick={handleMeusAgendamentos}
-                            >
-                                Meus Agendamentos
-                            </button>
                             <button className="menu-item" onClick={handleLogout}>
                                 Sair
                             </button>
@@ -315,6 +392,34 @@ export default function Dashboard() {
                 </div>
             </div>
 
+            {mostrarModalExcluirAg && (
+                <div className="modal-overlay">
+                    <div className="modal-box">
+                        <h3>Excluir Agendamento</h3>
+                        <p>Tem certeza que deseja excluir este agendamento?</p>
+
+                        <div className="modal-actions">
+                            <button
+                                className="cancelar-btn"
+                                onClick={() => setMostrarModalExcluirAg(false)}
+                            >
+                                Cancelar
+                            </button>
+
+                            <button
+                                className="confirmar-btn"
+                                onClick={() => {
+                                    excluirAgendamento(agendamentoParaExcluir);
+                                    setMostrarModalExcluirAg(false);
+                                }}
+                            >
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* NOVO BLOCO DE ABAS: Apenas "Novo Agendamento" fica aqui */}
             <div className="dashboard-tabs centered-tabs">
                 <button
@@ -323,6 +428,8 @@ export default function Dashboard() {
                 >
                     Novo Agendamento
                 </button>
+                <button className={`tab-button ${activeTab === "meus" ? "active" : ""}`} onClick={() => setActiveTab("meus")}>Meus Agendamentos</button>
+
                 {/* O botão "Meus Agendamentos" foi movido para o menu hambúrguer */}
             </div>
 
@@ -539,10 +646,25 @@ export default function Dashboard() {
                                 <div key={a.id} className="appointment-card">
                                     <div className="appointment-header">
                                         <h3>{a.servico?.nome || "Serviço"}</h3>
-                                        <span className={`status-badge ${a.confirmado ? "confirmed" : "pending"}`}>
-                                            {a.confirmado ? "Confirmado" : "Pendente"}
-                                        </span>
+
+                                        <div className="appointment-actions">
+                                            <span className={`status-badge ${a.confirmado ? "confirmed" : "pending"}`}>
+                                                {a.confirmado ? "Confirmado" : "Pendente"}
+                                            </span>
+
+                                            <button
+                                                className="delete-appointment-btn"
+                                                onClick={() => {
+                                                    setAgendamentoParaExcluir(a.id);
+                                                    setMostrarModalExcluirAg(true);
+                                                }}
+                                                title="Excluir agendamento"
+                                            >
+                                                X
+                                            </button>
+                                        </div>
                                     </div>
+
                                     <div className="appointment-details">
                                         <p><strong>Barbeiro:</strong> {a.proprietario?.nome || "N/A"}</p>
                                         <p><strong>Data/Hora:</strong> {new Date(a.dataHora).toLocaleString("pt-BR")}</p>

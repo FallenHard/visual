@@ -1637,3 +1637,102 @@
     justify-content: center;
     cursor: pointer;
 }
+
+.appointment-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.delete-appointment-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #ff5555;
+    transition: 0.2s;
+}
+
+.delete-appointment-btn:hover {
+    color: #ff2222;
+    transform: scale(1.2);
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.spinner {
+    width: 45px;
+    height: 45px;
+    border: 4px solid #4a90e2;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.modal-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999 !important;
+    /* O mais importante de tudo */
+}
+
+/* Caixa branca da modal */
+.modal-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    max-width: 90%;
+    color: #000;
+    text-align: center;
+    z-index: 100000 !important;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.cancelar-btn,
+.confirmar-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.cancelar-btn {
+    background: #999;
+    color: #fff;
+}
+
+.confirmar-btn {
+    background: #d9534f;
+    color: #fff;
+}
