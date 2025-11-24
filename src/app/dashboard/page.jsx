@@ -357,12 +357,15 @@ export default function Dashboard() {
                                             <button
                                                 className="delete-icon-btn"
                                                 onClick={(e) => {
+                                                    // Impede que o clique se propague para o elemento pai (ex: um card de serviço)
                                                     e.stopPropagation();
+                                                    // Chama a função de exclusão
                                                     excluirServico(servico.id);
                                                 }}
                                                 title="Excluir serviço"
                                             >
-                                                🗑️
+                                                {/* Ícone 'X' simples e limpo */}
+                                                X
                                             </button>
                                         )}
                                         <h3>{servico.nome}</h3>

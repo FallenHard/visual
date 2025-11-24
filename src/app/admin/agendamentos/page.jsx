@@ -233,11 +233,11 @@ export default function AdminPage() {
                                 <div className="button-group">
                                     {!agendamento.confirmado && (
                                         <button className="concluir-btn" onClick={() => setModalAgendamento(agendamento)}>
-                                            ✅ Concluir
+                                            Concluir
                                         </button>
                                     )}
                                     <button className="excluir-btn" onClick={() => setModalExcluir(agendamento)}>
-                                        <span>🗑️</span> Excluir
+                                        <span></span> Excluir
                                     </button>
                                 </div>
                             </div>

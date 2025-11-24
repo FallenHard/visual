@@ -1496,8 +1496,8 @@ body {
     position: absolute;
     top: 8px;
     right: 8px;
-    background: rgba(255, 0, 0, 0.15);
-    border: 1px solid rgba(255, 0, 0, 0.3);
+    background: rgba(23, 20, 192, 0.15);
+    border: 1px solid rgba(18, 41, 216, 0.3);
     color: #ff5555;
     font-size: 0.9rem;
     width: 28px;
@@ -1511,9 +1511,9 @@ body {
 }
 
 .delete-icon-btn:hover {
-    background: rgba(255, 0, 0, 0.25);
-    border-color: rgba(255, 0, 0, 0.5);
-    color: #ff7777;
+    background: rgba(42, 65, 170, 0.25);
+    border-color: rgba(37, 15, 175, 0.5);
+    color: #2b5baf;
     transform: scale(1.1);
 }
 
