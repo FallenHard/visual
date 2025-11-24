@@ -46,9 +46,12 @@ export default function Login() {
         <div className="barber-container">
             <div className="barber-card">
                 <div className="barber-logo">
-                    <div className="scissors-icon">✂</div>
+                    {/* 🚀 CORRIGIDO: Adicionado .jpeg, className e auto-fechamento */}
+                    <img src="/images/logo-headship-semfundo.png" alt="HeadShip Barber Shop Logo" className="logo-image" />
+                    {/* 🗑️ REMOVA ESSAS LINHAS SE QUISER APENAS A IMAGEM DA LOGO: */}
+                    {/* <div className="scissors-icon">✂</div>
                     <h1 className="barber-title">Barbearia Premium</h1>
-                    <p className="barber-subtitle">Estilo e Tradição</p>
+                    <p className="barber-subtitle">Estilo e Tradição</p> */}
                 </div>
 
                 <h2 className="welcome-text">Bem-vindo de volta</h2>
@@ -86,7 +89,8 @@ export default function Login() {
                                 right: "12px",
                                 top: "35px",
                                 cursor: "pointer",
-                                color: "#bfa14a",
+                                // 💡 ALTEREI A COR DO OLHO PARA O AZUL DE ACENTO (#4A90E2)
+                                color: "#4A90E2",
                                 opacity: 0.8,
                                 transition: "opacity 0.2s",
                             }}

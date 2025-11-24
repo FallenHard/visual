@@ -66,7 +66,7 @@ export default function AdminPage() {
                 servicoNome: a.servico?.nome || "Serviço",
                 clienteNome: a.cliente?.nome || "N/A",
                 proprietarioNome: a.proprietario?.nome || "N/A",
-                telefoneNome: a.cliente?.telefone || "N/A",
+                telefoneNome: a.cliente && (a.cliente.telefone ?? a.cliente.Telefone ?? "N/A"),
                 dataHora: a.dataHora,
                 precoFinal: a.precoFinal ?? 0,
                 observacoes: a.observacao ?? "",

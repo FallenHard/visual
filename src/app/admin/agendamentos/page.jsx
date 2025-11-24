@@ -219,6 +219,10 @@ export default function AdminPage() {
                                     <span className="detail-label">Preço:</span>
                                     <span className="detail-value price">R$ {(agendamento.precoFinal || 0).toFixed(2)}</span>
                                 </div>
+                                <div className="detail-row">
+                                    <span className="detail-label">Telefone:</span>
+                                    <span className="detail-value">{agendamento.cliente?.telefone}</span>
+                                </div>
                                 {agendamento.observacao && (
                                     <div className="detail-row">
                                         <span className="detail-label">Obs:</span>

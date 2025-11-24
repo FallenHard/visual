@@ -1,20 +1,49 @@
+/*
+ * 💈 CORES AZULADAS INSPIRADAS NA BARBEARIA HEADSHIP
+ * Cor de Acento Principal: #4A90E2 (Azul Brilhante)
+ * Cor de Fundo Principal: #1A2B5B (Azul Escuro)
+ *
+ * ℹ️ LOGO: Para incorporar o logo "HeadShip Barber Shop", você deve:
+ * 1. Adicionar o logo como uma imagem no seu HTML (Ex: <img src="logo.png" alt="Logo" class="barbershop-logo">).
+ * 2. Adicionar o CSS abaixo para posicionamento (ajuste o 'width' conforme o tamanho do logo).
+ *
+ * .barbershop-logo {
+ * position: absolute;
+ * top: 1rem;
+ * left: 50%;
+ * transform: translateX(-50%);
+ * width: 200px;
+ * height: auto;
+ * z-index: 10;
+ * }
+*/
+
 .dashboard-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 100%);
+    /* Fundo Escuro Azulado */
+    background: linear-gradient(135deg, #0f1c2c 0%, #1a3a5a 100%);
     padding: 2rem 1rem;
 }
 
 .dashboard-header {
     text-align: center;
     margin-bottom: 2rem;
+    position: relative;
+    /* Necessário para posicionar o logo se for absoluta */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .dashboard-title {
     font-family: "Playfair Display", serif;
     font-size: 2.5rem;
-    color: #d4af37;
+    color: #4A90E2;
+    /* Título Azul */
     margin-bottom: 0.5rem;
-    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+    text-shadow: 0 2px 10px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .dashboard-subtitle {
@@ -33,7 +62,8 @@
 .tab-button {
     padding: 0.75rem 2rem;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    /* Borda Azul */
     color: #999;
     border-radius: 8px;
     cursor: pointer;
@@ -42,14 +72,17 @@
 }
 
 .tab-button:hover {
-    background: rgba(212, 175, 55, 0.1);
-    color: #d4af37;
+    background: rgba(74, 144, 226, 0.1);
+    /* Hover Azul */
+    color: #4A90E2;
+    /* Cor do texto hover azul */
 }
 
 .tab-button.active {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul Ativo */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
-    border-color: #d4af37;
+    border-color: #4A90E2;
     font-weight: 600;
 }
 
@@ -65,7 +98,8 @@
 
 .booking-section {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 12px;
     padding: 1.5rem;
 }
@@ -76,7 +110,8 @@
 
 .section-title {
     font-family: "Playfair Display", serif;
-    color: #d4af37;
+    color: #4A90E2;
+    /* Título da seção Azul */
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
@@ -90,7 +125,8 @@
 
 .service-card {
     background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(212, 175, 55, 0.2);
+    border: 2px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 10px;
     padding: 1.5rem;
     cursor: pointer;
@@ -100,13 +136,16 @@
 
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: #d4af37;
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    border-color: #4A90E2;
+    /* Borda hover Azul */
+    box-shadow: 0 5px 20px rgba(74, 144, 226, 0.3);
+    /* Sombra hover Azul */
 }
 
 .service-card.selected {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.2) 100%);
-    border-color: #d4af37;
+    /* Gradiente Azul Selecionado */
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(118, 185, 237, 0.2) 100%);
+    border-color: #4A90E2;
 }
 
 .service-card h3 {
@@ -116,7 +155,8 @@
 }
 
 .service-price {
-    color: #d4af37;
+    color: #4A90E2;
+    /* Preço Azul */
     font-size: 1.3rem;
     font-weight: 700;
     margin: 0.5rem 0;
@@ -136,7 +176,8 @@
 
 .barber-card {
     background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(212, 175, 55, 0.2);
+    border: 2px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 10px;
     padding: 1.5rem;
     cursor: pointer;
@@ -146,19 +187,22 @@
 
 .barber-card:hover {
     transform: translateY(-5px);
-    border-color: #d4af37;
+    border-color: #4A90E2;
+    /* Borda hover Azul */
 }
 
 .barber-card.selected {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.2) 100%);
-    border-color: #d4af37;
+    /* Gradiente Azul Selecionado */
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(118, 185, 237, 0.2) 100%);
+    border-color: #4A90E2;
 }
 
 .barber-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Avatar com Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,9 +236,12 @@
 }
 
 .calendar-nav {
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    color: #d4af37;
+    background: rgba(74, 144, 226, 0.1);
+    /* Nav calendário Azul */
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    /* Borda nav calendário Azul */
+    color: #4A90E2;
+    /* Cor nav calendário Azul */
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -204,7 +251,8 @@
 }
 
 .calendar-nav:hover {
-    background: rgba(212, 175, 55, 0.2);
+    background: rgba(74, 144, 226, 0.2);
+    /* Hover nav calendário Azul */
 }
 
 .calendar-weekdays {
@@ -216,7 +264,8 @@
 
 .weekday {
     text-align: center;
-    color: #d4af37;
+    color: #4A90E2;
+    /* Dias da semana Azul */
     font-size: 0.85rem;
     font-weight: 600;
     padding: 0.5rem 0;
@@ -234,7 +283,8 @@
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
@@ -243,15 +293,17 @@
 }
 
 .calendar-day:hover:not(.empty):not(.past) {
-    background: rgba(212, 175, 55, 0.2);
-    border-color: #d4af37;
+    background: rgba(74, 144, 226, 0.2);
+    /* Hover dia do calendário Azul */
+    border-color: #4A90E2;
 }
 
 .calendar-day.selected {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul Selecionado */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     font-weight: 700;
-    border-color: #d4af37;
+    border-color: #4A90E2;
 }
 
 .calendar-day.empty {
@@ -275,7 +327,8 @@
 .time-slot {
     padding: 0.75rem;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
@@ -284,15 +337,17 @@
 }
 
 .time-slot:hover {
-    background: rgba(212, 175, 55, 0.1);
-    border-color: #d4af37;
+    background: rgba(74, 144, 226, 0.1);
+    /* Hover Azul */
+    border-color: #4A90E2;
 }
 
 .time-slot.selected {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul Selecionado */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     font-weight: 600;
-    border-color: #d4af37;
+    border-color: #4A90E2;
 }
 
 /* Textarea */
@@ -300,7 +355,8 @@
     width: 100%;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    /* Borda Azul */
     border-radius: 8px;
     color: #fff;
     font-size: 0.95rem;
@@ -310,8 +366,10 @@
 
 .barber-textarea:focus {
     outline: none;
-    border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    border-color: #4A90E2;
+    /* Foco Azul */
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    /* Sombra foco Azul */
 }
 
 /* Lista de Agendamentos */
@@ -322,7 +380,8 @@
 
 .appointment-card {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 12px;
     padding: 1.5rem;
 }
@@ -337,7 +396,8 @@
 }
 
 .appointment-header h3 {
-    color: #d4af37;
+    color: #4A90E2;
+    /* Título agendamento Azul */
     font-size: 1.3rem;
 }
 
@@ -367,7 +427,8 @@
 }
 
 .appointment-details strong {
-    color: #d4af37;
+    color: #4A90E2;
+    /* Detalhes agendamento Azul */
 }
 
 .empty-state {
@@ -424,7 +485,8 @@
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     border: none;
     border-radius: 50px;
@@ -432,7 +494,8 @@
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+    /* Sombra Azul */
     transition: all 0.3s ease;
     z-index: 1000;
     display: flex;
@@ -443,8 +506,10 @@
 
 .admin-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
-    background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+    box-shadow: 0 12px 35px rgba(74, 144, 226, 0.6);
+    /* Sombra hover Azul */
+    /* Gradiente Azul Hover Invertido */
+    background: linear-gradient(135deg, #76B9ED 0%, #4A90E2 100%);
 }
 
 .admin-button:active {
@@ -465,13 +530,17 @@
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.1) 100%);
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    color: #ffd700;
+    /* Gradiente Azul Suave */
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(118, 185, 237, 0.1) 100%);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    /* Borda Azul */
+    color: #76B9ED;
+    /* Texto Azul Claro */
     font-weight: 600;
     padding: 15px 30px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.2);
+    /* Sombra Azul */
     z-index: 9999;
     animation: fadeSlideUp 0.4s ease forwards, fadeOut 0.4s ease 2.6s forwards;
     text-align: center;
@@ -519,15 +588,6 @@
 
 /* 🔹 Horário desativado corretamente */
 .time-slot.disabled {
-    background: rgba(255, 0, 0, 0.15);
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    color: #f87171;
-    cursor: not-allowed !important;
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-
-.time-slot.disabled {
     background: rgba(255, 50, 50, 0.15);
     border: 1px solid rgba(255, 50, 50, 0.3);
     color: #ff6666;
@@ -540,7 +600,8 @@
 /* 🔹 Seção de Gerenciamento de Serviços */
 .servico-add-section {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 12px;
     padding: 1.5rem;
     margin-top: 2rem;
@@ -557,7 +618,8 @@
 
 .servico-form input {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    /* Borda Azul */
     border-radius: 8px;
     padding: 0.7rem 1rem;
     color: #fff;
@@ -567,14 +629,17 @@
 }
 
 .servico-form input:focus {
-    border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    border-color: #4A90E2;
+    /* Foco Azul */
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    /* Sombra foco Azul */
     outline: none;
 }
 
 /* 🔹 Botão Adicionar Serviço */
 .adicionar-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     border: none;
     border-radius: 8px;
     padding: 0.75rem 1.5rem;
@@ -582,12 +647,14 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .adicionar-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 8px 18px rgba(74, 144, 226, 0.5);
+    /* Sombra hover Azul */
 }
 
 /* 🔹 Lista de serviços */
@@ -599,7 +666,8 @@
 
 .servico-card {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    /* Borda Azul */
     border-radius: 10px;
     padding: 1.2rem;
     text-align: center;
@@ -608,8 +676,10 @@
 
 .servico-card:hover {
     transform: translateY(-3px);
-    border-color: #d4af37;
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    border-color: #4A90E2;
+    /* Borda hover Azul */
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+    /* Sombra hover Azul */
 }
 
 .servico-card h3 {
@@ -619,7 +689,8 @@
 }
 
 .servico-card .preco {
-    color: #d4af37;
+    color: #4A90E2;
+    /* Preço Azul */
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -647,17 +718,20 @@
 
 /* ✅ Botão Editar */
 .concluir-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .concluir-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
+    /* Sombra hover Azul */
 }
 
-/* ❌ Botão Excluir */
+/* ❌ Botão Excluir (Mantido Vermelho para Ação Destrutiva) */
 .excluir-btn {
     background: linear-gradient(135deg, #ff5555 0%, #cc3333 100%);
     color: #fff;
@@ -685,17 +759,20 @@
 
 .modal-box {
     background: #111;
-    border: 1px solid rgba(212, 175, 55, 0.4);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    /* Borda Azul */
     border-radius: 12px;
     padding: 2rem;
     width: 90%;
     max-width: 400px;
-    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 30px rgba(74, 144, 226, 0.2);
+    /* Sombra Azul */
     text-align: center;
 }
 
 .modal-box h3 {
-    color: #d4af37;
+    color: #4A90E2;
+    /* Título modal Azul */
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -704,7 +781,8 @@
     width: 100%;
     padding: 0.75rem;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    /* Borda Azul */
     border-radius: 8px;
     color: #fff;
     margin-bottom: 1rem;
@@ -740,14 +818,16 @@
 
 /* ✅ Confirmar */
 .confirmar-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     font-weight: 700;
 }
 
 .confirmar-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
+    /* Sombra hover Azul */
 }
 
 .adicionar-btn {
@@ -760,7 +840,8 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     border: none;
     width: 42px;
@@ -770,12 +851,14 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .add-service-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.6);
+    /* Sombra hover Azul */
 }
 
 /* 🔹 Ações dentro do card de serviço */
@@ -799,17 +882,20 @@
 
 /* ✏️ Editar */
 .concluir-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .concluir-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.6);
+    /* Sombra hover Azul */
 }
 
-/* 🗑️ Excluir */
+/* 🗑️ Excluir (Botão Vermelho) */
 .excluir-btn {
     background: linear-gradient(135deg, #ff4e4e 0%, #b80000 100%);
     color: #fff;
@@ -837,17 +923,20 @@
 
 .modal-box {
     background: #111;
-    border: 1px solid rgba(212, 175, 55, 0.4);
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    /* Borda Azul */
     border-radius: 12px;
     padding: 2rem;
     width: 90%;
     max-width: 400px;
-    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 30px rgba(74, 144, 226, 0.2);
+    /* Sombra Azul */
     text-align: center;
 }
 
 .modal-box h3 {
-    color: #d4af37;
+    color: #4A90E2;
+    /* Título modal Azul */
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -856,15 +945,18 @@
     width: 100%;
     padding: 0.75rem;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    /* Borda Azul */
     border-radius: 8px;
     color: #fff;
     margin-bottom: 1rem;
 }
 
 .modal-box input:focus {
-    border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    border-color: #4A90E2;
+    /* Foco Azul */
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    /* Sombra foco Azul */
     outline: none;
 }
 
@@ -899,15 +991,18 @@
 
 /* Confirmar */
 .confirmar-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .confirmar-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.6);
+    /* Sombra hover Azul */
 }
 
 /* 🔹 Responsividade */
@@ -932,7 +1027,8 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     border: none;
     width: 42px;
@@ -942,12 +1038,14 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .add-service-btn-inside:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.6);
+    /* Sombra hover Azul */
 }
 
 /* 🔹 Ações dentro do card de serviço */
@@ -956,13 +1054,7 @@
     text-align: center;
 }
 
-/* 🗑️ Excluir */
-.service-actions {
-    margin-top: 0.75rem;
-    text-align: center;
-}
-
-/* 🗑️ Ícone de lixeira minimalista */
+/* 🗑️ Ícone de lixeira minimalista (Vermelho) */
 .excluir-btn {
     background: linear-gradient(135deg, #ff4e4e 0%, #b80000 100%);
     border: none;
@@ -989,7 +1081,8 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
     color: #000;
     border: none;
     width: 34px;
@@ -999,12 +1092,14 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 3px 10px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
 }
 
 .add-service-btn-inside:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.6);
+    /* Sombra hover Azul */
 }
 
 /* 🔹 Responsividade */
@@ -1060,7 +1155,8 @@
 
 .modal-delete {
     border: 1px solid rgba(255, 80, 80, 0.5);
-    background: linear-gradient(145deg, #0e0e0e 0%, #1b1513 100%);
+    /* Fundo Escuro com Toque Azul (mantendo o vermelho do delete) */
+    background: linear-gradient(145deg, #0e0e0e 0%, #1a1f2b 100%);
     color: #fff;
     text-align: center;
     padding: 2rem;
@@ -1092,8 +1188,10 @@
 /* Botões do modal */
 .cancelar-btn {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    color: #d4af37;
+    border: 1px solid rgba(74, 144, 226, 0.4);
+    /* Borda Azul */
+    color: #4A90E2;
+    /* Cor Azul */
     border-radius: 8px;
     padding: 0.6rem 1.2rem;
     cursor: pointer;
@@ -1101,7 +1199,8 @@
 }
 
 .cancelar-btn:hover {
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(74, 144, 226, 0.1);
+    /* Hover Azul */
 }
 
 .delete-confirm {
@@ -1142,7 +1241,8 @@
     position: absolute;
     right: 20px;
     top: 10px;
-    background-color: #3b2121;
+    /* Cor de Fundo Escuro para o Logout */
+    background-color: #1a3a5a;
     color: #fff;
     border: none;
     padding: 8px 14px;
@@ -1153,5 +1253,33 @@
 }
 
 .logout-button:hover {
-    background-color: #e6d7d7;
+    /* Cor de Acento Azul no Hover */
+    background-color: #4A90E2;
+}
+
+/* Classes que tinham sido coladas duas vezes no final */
+
+.add-service-btn-inside {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    /* Gradiente Azul */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
+    color: #000;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(74, 144, 226, 0.3);
+    /* Sombra Azul */
+}
+
+.add-service-btn-inside:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.6);
+    /* Sombra hover Azul */
 }

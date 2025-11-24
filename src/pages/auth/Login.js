@@ -44,8 +44,7 @@ export default function Login() {
         <div className="barber-container">
             <div className="barber-card">
                 <div className="barber-logo">
-                    <div className="scissors-icon">✂</div>
-                    <h1 className="barber-title">Barbearia Premium</h1>
+<img src="/images/logo-headship.jpeg" alt="HeadShip Barber Shop Logo" className="logo-image" />                    <h1 className="barber-title">Barbearia Premium</h1>
                     <p className="barber-subtitle">Estilo e Tradição</p>
                 </div>
 
