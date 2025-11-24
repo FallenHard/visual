@@ -20,6 +20,9 @@ export default function Dashboard() {
     const router = useRouter()
     const [mostrarModalExcluirAg, setMostrarModalExcluirAg] = useState(false);
     const [agendamentoParaExcluir, setAgendamentoParaExcluir] = useState(null);
+    const [mostrarModalExcluirServico, setMostrarModalExcluirServico] = useState(false);
+    const [servicoParaExcluir, setServicoParaExcluir] = useState(null);
+
     // 🌟 NOVO ESTADO: Controla a abertura do menu hambúrguer/configurações
     const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
@@ -28,11 +31,12 @@ export default function Dashboard() {
         proprietarioId: "",
         observacao: "",
     })
+
+    const [horariosOcupados, setHorariosOcupados] = useState([]);
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [selectedTime, setSelectedTime] = useState("")
 
     const [mostrarModalExcluir, setMostrarModalExcluir] = useState(false)
-    const [servicoParaExcluir, setServicoParaExcluir] = useState(null)
 
     // 🔹 Estados para CRUD de serviços
     const [mostrarModalServico, setMostrarModalServico] = useState(false)
@@ -49,6 +53,44 @@ export default function Dashboard() {
     useEffect(() => {
         carregarDados()
     }, [])
+
+    useEffect(() => {
+        if (!formData.proprietarioId || !selectedDate) return;
+
+        const fetchOcupados = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                if (!token) return;
+
+                const yyyy = selectedDate.getFullYear();
+                const mm = String(selectedDate.getMonth() + 1).padStart(2, "0");
+                const dd = String(selectedDate.getDate()).padStart(2, "0");
+
+                const dataFormatada = `${yyyy}-${mm}-${dd}`;
+
+                const res = await fetch(
+                    `${API_URL}/api/Agendamento/ocupados?proprietarioId=${parseInt(formData.proprietarioId)}&data=${dataFormatada}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }
+                );
+
+                if (res.ok) {
+                    const dados = await res.json();
+                    console.log("Horários Ocupados:", dados); // DEBUG
+                    setHorariosOcupados(dados);
+                } else {
+                    console.error("Erro ao carregar horários ocupados");
+                }
+            } catch (err) {
+                console.error("Erro:", err);
+            }
+        };
+
+        fetchOcupados();
+    }, [formData.proprietarioId, selectedDate]);
 
     const carregarDados = async () => {
         const token = localStorage.getItem("token");
@@ -98,24 +140,22 @@ export default function Dashboard() {
 
     // 🔹 Verifica se horário está ocupado
     const horarioOcupado = (horario) => {
-        if (!formData.proprietarioId) return false
-        const [horaDesejada, minutoDesejado] = horario.split(":").map(Number)
-        const dataSelecionada = selectedDate.toISOString().split("T")[0]
+        const [h, m] = horario.split(":").map(Number);
 
-        return agendamentos.some((a) => {
-            if (a.proprietario?.id !== parseInt(formData.proprietarioId)) return false
-            const dataAgendamento = new Date(a.dataHora)
-            const dataAgendada = dataAgendamento.toISOString().split("T")[0]
-            const horaAgendada = dataAgendamento.getUTCHours()
-            const minutoAgendado = dataAgendamento.getUTCMinutes()
+        return horariosOcupados.some(o => {
+            const dataOcupado = new Date(o.dataHora);
 
+            const dataSelecionadaStr = selectedDate.toISOString().split("T")[0];
+            const dataOcupadoStr = dataOcupado.toISOString().split("T")[0];
+
+            // compara dia, hora e minuto
             return (
-                dataSelecionada === dataAgendada &&
-                horaAgendada === horaDesejada &&
-                minutoAgendado === minutoDesejado
-            )
-        })
-    }
+                dataSelecionadaStr === dataOcupadoStr &&
+                dataOcupado.getHours() === h &&
+                dataOcupado.getMinutes() === m
+            );
+        });
+    };
 
     // 🔹 Criar agendamento
     const handleSubmit = async (e) => {
@@ -358,6 +398,7 @@ export default function Dashboard() {
         <div className="dashboard-container">
             {/* NOVO HEADER: Focado em centralização e menu hambúrguer */}
             <div className="dashboard-header new-header">
+
                 <div className="dashboard-header-center">
                     <h1 className="dashboard-title">Agendamentos</h1>
                     <p className="dashboard-subtitle">Agende seu horário com os melhores profissionais</p>
@@ -368,29 +409,22 @@ export default function Dashboard() {
                         <button
                             className={`hamburger-icon-btn ${isSettingsOpen ? 'open' : ''}`}
                             onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-                            aria-label="Menu de Opções"
                         >
-                            {/* Ícone Hambúrguer (pode ser um ícone de três barras, como no seu print) */}
-                            {/* Você pode substituir este texto por um componente de ícone real (SVG/Image) para o melhor visual */}
-                            <div className="hamburger-icon">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
                         </button>
                         <div className={`menu-drawer ${isSettingsOpen ? 'open' : ''}`}>
-                            <button className="menu-item" onClick={handleLogout}>
-                                Sair
-                            </button>
+                            <button className="menu-item" onClick={handleLogout}>Sair</button>
                             {role === "Proprietario" && (
-                                <button className="menu-item admin-link" onClick={() => router.push("/admin/agendamentos")}>
-                                    📋 Ver Todos (Admin)
-                                </button>
+                                <button className="menu-item admin-link" onClick={() => router.push("/admin/agendamentos")}>📋 Ver Todos (Admin)</button>
                             )}
                         </div>
                     </div>
                 </div>
+
             </div>
+
 
             {mostrarModalExcluirAg && (
                 <div className="modal-overlay">
@@ -411,6 +445,34 @@ export default function Dashboard() {
                                 onClick={() => {
                                     excluirAgendamento(agendamentoParaExcluir);
                                     setMostrarModalExcluirAg(false);
+                                }}
+                            >
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {mostrarModalExcluirServico && (
+                <div className="modal-overlay">
+                    <div className="modal-box">
+                        <h3>Excluir Serviço</h3>
+                        <p>Tem certeza que deseja excluir este serviço?</p>
+
+                        <div className="modal-actions">
+                            <button
+                                className="cancelar-btn"
+                                onClick={() => setMostrarModalExcluirServico(false)}
+                            >
+                                Cancelar
+                            </button>
+
+                            <button
+                                className="confirmar-btn"
+                                onClick={() => {
+                                    excluirServico(servicoParaExcluir);
+                                    setMostrarModalExcluirServico(false);
                                 }}
                             >
                                 Excluir
@@ -462,16 +524,12 @@ export default function Dashboard() {
                                     >
                                         {role.toLowerCase() === "proprietario" && (
                                             <button
-                                                className="delete-icon-btn"
-                                                onClick={(e) => {
-                                                    // Impede que o clique se propague para o elemento pai (ex: um card de serviço)
-                                                    e.stopPropagation();
-                                                    // Chama a função de exclusão
-                                                    excluirServico(servico.id);
+                                                className="delete-appointment-btn"
+                                                onClick={() => {
+                                                    setServicoParaExcluir(servico.id);
+                                                    setMostrarModalExcluirServico(true);
                                                 }}
-                                                title="Excluir serviço"
                                             >
-                                                {/* Ícone 'X' simples e limpo */}
                                                 X
                                             </button>
                                         )}
@@ -644,25 +702,25 @@ export default function Dashboard() {
                         ) : (
                             agendamentos.map((a) => (
                                 <div key={a.id} className="appointment-card">
+
+                                    {/* Botão X agora fica no topo absoluto do card */}
+                                    <button
+                                        className="delete-appointment-btn"
+                                        onClick={() => {
+                                            setAgendamentoParaExcluir(a.id);
+                                            setMostrarModalExcluirAg(true);
+                                        }}
+                                        title="Excluir agendamento"
+                                    >
+                                        X
+                                    </button>
+
                                     <div className="appointment-header">
                                         <h3>{a.servico?.nome || "Serviço"}</h3>
 
-                                        <div className="appointment-actions">
-                                            <span className={`status-badge ${a.confirmado ? "confirmed" : "pending"}`}>
-                                                {a.confirmado ? "Confirmado" : "Pendente"}
-                                            </span>
-
-                                            <button
-                                                className="delete-appointment-btn"
-                                                onClick={() => {
-                                                    setAgendamentoParaExcluir(a.id);
-                                                    setMostrarModalExcluirAg(true);
-                                                }}
-                                                title="Excluir agendamento"
-                                            >
-                                                X
-                                            </button>
-                                        </div>
+                                        <span className={`status-badge ${a.confirmado ? "confirmed" : "pending"}`}>
+                                            {a.confirmado ? "Confirmado" : "Pendente"}
+                                        </span>
                                     </div>
 
                                     <div className="appointment-details">
