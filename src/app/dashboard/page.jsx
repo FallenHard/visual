@@ -22,7 +22,7 @@ function buildWhatsAppLink(phone, message) {
 }
 
 export default function Dashboard() {
-    // ALTERAÇÃO: Inicializa como "novo"
+    // ALTERAÇÃO: Inicializa como "novo"""
     const [activeTab, setActiveTab] = useState("novo")
     const [servicos, setServicos] = useState([])
     const [barbeiros, setBarbeiros] = useState([])
