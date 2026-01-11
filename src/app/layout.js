@@ -1,7 +1,7 @@
 import "../globals.css"
 
 export const metadata = {
-  title: "Barbearia Premium",
+  title: "HeadShip",
   description: "Sistema de agendamento",
 }
 

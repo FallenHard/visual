@@ -7,6 +7,19 @@ import "../../dashboard.css"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://barbeariasite.onrender.com"
 
+const WA_DEFAULT = process.env.NEXT_PUBLIC_WA_BARBEARIA || "5519974143216";
+
+function formatDateBR(dateObj) {
+    const dd = String(dateObj.getDate()).padStart(2, "0");
+    const mm = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const yyyy = dateObj.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+}
+
+function buildWhatsAppLink(phone, message) {
+    const cleanPhone = String(phone || "").replace(/\D/g, "");
+    return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+}
 
 export default function Dashboard() {
     // ALTERAÇÃO: Inicializa como "novo"
@@ -16,6 +29,8 @@ export default function Dashboard() {
     const [agendamentos, setAgendamentos] = useState([])
     const [role, setRole] = useState("")
     const [toastMessage, setToastMessage] = useState("")
+    const [waLink, setWaLink] = useState("");
+    const [showWaModal, setShowWaModal] = useState(false);
     const [loading, setLoading] = useState(true);
     const router = useRouter()
     const [mostrarModalExcluirAg, setMostrarModalExcluirAg] = useState(false);
@@ -210,6 +225,26 @@ export default function Dashboard() {
             }
 
             mostrarToast("✅ Agendamento criado com sucesso!")
+
+            const barbeiroSelecionado = barbeiros.find(
+                b => b.id === parseInt(formData.proprietarioId)
+            )
+
+            const dataMsg = formatDateBR(selectedDate)
+
+            const msg =
+                `✂️ *Novo agendamento realizado!* \n\n` +
+                `Olá! Seguem os detalhes do agendamento:\n\n` +
+                `💈 *Serviço:* ${servicoSelecionado?.nome || "N/A"}\n` +
+                `👤 *Barbeiro:* ${barbeiroSelecionado?.nome || "N/A"}\n` +
+                `📅 *Data:* ${dataMsg}\n` +
+                `⏰ *Horário:* ${selectedTime}\n\n` +
+                `📝 *Observações:* ${formData.observacao || "Nenhuma"}`
+
+            const link = buildWhatsAppLink(WA_DEFAULT, msg);
+            setWaLink(link);
+            setShowWaModal(true);
+
             setFormData({ servicoId: "", proprietarioId: "", observacao: "" })
             setSelectedTime("")
             carregarDados()
@@ -738,6 +773,50 @@ export default function Dashboard() {
 
             {/* O botão "Ver Todos (Admin)" foi movido para o menu hambúrguer para manter o foco na centralização */}
 
+            {showWaModal && (
+                <div className="modal-overlay">
+                    <div className="modal-box">
+                        <h3>✅ Agendamento criado!</h3>
+                        <p style={{ marginTop: 8, lineHeight: 1.4 }}>
+                            Para finalizar, o WhatsApp vai abrir com a mensagem pronta.
+                            <br />
+                            <strong>Você só precisa tocar em “Enviar”.</strong>
+                        </p>
+
+                        <div className="modal-actions" style={{ marginTop: 16 }}>
+                            <button
+                                className="cancelar-btn"
+                                onClick={() => {
+                                    setShowWaModal(false);
+                                    setWaLink("");
+                                }}
+                            >
+                                Agora não
+                            </button>
+
+                            <a
+                                className="confirmar-btn"
+                                href={waLink}
+                                target="_blank"
+                                rel="noreferrer"
+                                onClick={() => setShowWaModal(false)}
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    textDecoration: "none"
+                                }}
+                            >
+                                Abrir WhatsApp e Enviar
+                            </a>
+                        </div>
+
+                        <p style={{ marginTop: 12, fontSize: 12, opacity: 0.85 }}>
+                            Dica: se o WhatsApp não abrir automaticamente, verifique se o navegador bloqueou pop-ups.
+                        </p>
+                    </div>
+                </div>
+            )}
 
             {toastMessage && <div className="toast">{toastMessage}</div>}
         </div>
