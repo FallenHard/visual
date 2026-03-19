@@ -150,13 +150,7 @@ export default function AdminPage() {
                         <p className="stat-value">{stats.confirmados}</p>
                     </div>
                 </div>
-                <div className="stat-card">
-                    <div className="stat-icon">⏳</div>
-                    <div className="stat-info">
-                        <p className="stat-label">Pendentes</p>
-                        <p className="stat-value">{stats.pendentes}</p>
-                    </div>
-                </div>
+
                 <div className="stat-card">
                     <div className="stat-icon">💰</div>
                     <div className="stat-info">
@@ -170,9 +164,7 @@ export default function AdminPage() {
                 <button className={`filter-btn ${filtroStatus === "todos" ? "active" : ""}`} onClick={() => setFiltroStatus("todos")}>
                     Todos ({stats.total})
                 </button>
-                <button className={`filter-btn ${filtroStatus === "pendente" ? "active" : ""}`} onClick={() => setFiltroStatus("pendente")}>
-                    Pendentes ({stats.pendentes})
-                </button>
+
                 <button className={`filter-btn ${filtroStatus === "confirmado" ? "active" : ""}`} onClick={() => setFiltroStatus("confirmado")}>
                     Confirmados ({stats.confirmados})
                 </button>
@@ -194,9 +186,7 @@ export default function AdminPage() {
                         <div key={agendamento.id} className="appointment-card">
                             <div className="appointment-header">
                                 <h3 className="appointment-service">{agendamento.servico?.nome || "Serviço"}</h3>
-                                <span className={`appointment-status ${agendamento.confirmado ? "status-confirmado" : "status-pendente"}`}>
-                                    {agendamento.confirmado ? "Confirmado" : "Pendente"}
-                                </span>
+
                             </div>
                             <div className="appointment-details">
                                 <div className="detail-row">
