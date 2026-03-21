@@ -1,0 +1,365 @@
+/*!************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/barber.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    min-height: 100vh;
+}
+
+/* Container principal com tema de barbearia (FUNDO AZUL ESCURO) */
+.barber-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Gradiente de fundo escuro azulado */
+    background: linear-gradient(135deg, #101c2c 0%, #1a3a5a 50%, #101c2c 100%);
+    position: relative;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.barber-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    /* Efeito de pulso AZUL */
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* Card principal */
+.barber-card {
+    background: rgba(30, 30, 30, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem 2rem;
+    width: 100%;
+    max-width: 440px;
+    /* Sombra e borda AZUL */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(74, 144, 226, 0.2);
+    position: relative;
+    z-index: 1;
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+/* 🖼️ LOGO HEADSHIP */
+.barber-logo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    /* Linha AZUL para separação */
+    border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+}
+
+.logo-image {
+    /* 🚀 VALOR CORRIGIDO: Usa 90% da largura disponível para ser RESPONSIVO em celulares */
+    width: 90%;
+    max-width: 380px;
+    /* Limite o tamanho máximo para telas grandes */
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(74, 144, 226, 0.4));
+    /* Sombra para destacar a logo */
+}
+
+/* O código abaixo é apenas para fins de compatibilidade caso o HTML use as classes antigas */
+.scissors-icon,
+.barber-title,
+.barber-subtitle {
+    display: none;
+    /* Esconde elementos genéricos se estiver usando a imagem */
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+
+/* Textos de boas-vindas */
+.welcome-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+    font-size: 0.9rem;
+    color: #999;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Formulário */
+.barber-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    color: #4A90E2;
+    /* Label AZUL */
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.barber-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Borda AZUL */
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.barber-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.barber-input:focus {
+    outline: none;
+    border-color: #4A90E2;
+    /* Foco AZUL */
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    /* Sombra AZUL no foco */
+}
+
+/* Botão premium (AGORA AZUL) */
+.barber-button {
+    width: 100%;
+    padding: 0.875rem;
+    margin-top: 0.5rem;
+    /* Gradiente AZUL */
+    background: linear-gradient(135deg, #4A90E2 0%, #76B9ED 100%);
+    border: none;
+    border-radius: 10px;
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.barber-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.barber-button:hover::before {
+    left: 100%;
+}
+
+.barber-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
+    /* Sombra AZUL no hover */
+}
+
+.barber-button:active {
+    transform: translateY(0);
+}
+
+.barber-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.barber-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mensagens */
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(255, 107, 107, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 107, 0.2);
+}
+
+.success-message {
+    color: #51cf66;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(81, 207, 102, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(81, 207, 102, 0.2);
+}
+
+/* Footer */
+.footer-text {
+    text-align: center;
+    color: #999;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+}
+
+.footer-link {
+    color: #4A90E2;
+    /* Link AZUL */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #76B9ED;
+    /* Link AZUL claro no hover */
+    text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .barber-card {
+        padding: 1.5rem 1.25rem;
+        margin: 0.5rem;
+        max-height: 98vh;
+    }
+
+    /* Oculta os textos genéricos */
+    .barber-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.15em;
+    }
+
+    .scissors-icon {
+        font-size: 2rem;
+    }
+
+    /* Fim dos textos genéricos */
+
+
+    .welcome-text {
+        font-size: 1.25rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .barber-logo {
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .barber-form {
+        gap: 0.875rem;
+    }
+
+    .barber-input {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    .barber-button {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-text {
+        font-size: 0.8rem;
+        margin-top: 0.875rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .barber-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .barber-title {
+        font-size: 1.25rem;
+    }
+
+    .welcome-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .barber-card {
+        max-height: none;
+        padding: 1rem 2rem;
+    }
+
+    .barber-logo {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .scissors-icon {
+        font-size: 1.75rem;
+    }
+
+    .barber-title {
+        font-size: 1.25rem;
+    }
+
+    .welcome-text {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .welcome-subtitle {
+        margin-bottom: 1rem;
+    }
+
+    .barber-form {
+        gap: 0.75rem;
+    }
+}

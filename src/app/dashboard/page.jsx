@@ -220,7 +220,8 @@ export default function Dashboard() {
 
             if (!res.ok) {
                 const txt = await res.text()
-                mostrarToast(`❌ Erro: ${txt || res.statusText}`)
+                // Se for o erro da trava, mostra a frase direta. Se for outro erro, avisa que é erro.
+                mostrarToast(txt ? `⚠️ ${txt}` : `❌ Erro: ${res.statusText}`)
                 return
             }
 
