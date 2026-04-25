@@ -58,12 +58,17 @@ export default function Dashboard() {
     const [novoServico, setNovoServico] = useState({ nome: "", preco: "" })
     const [servicoEditando, setServicoEditando] = useState(null)
 
-    const horariosDisponiveis = [
-        "09:00", "10:00",
-        "14:40", "15:00", "16:00",
-        "17:00", "18:00",
-        "19:00", "20:00"
+    const horariosSemana = [
+        "09:00", "14:00", "14:40", "15:00",
+        "16:00", "17:00", "18:00", "19:00", "20:00"
     ]
+
+    const horariosSabado = [
+        "08:00", "09:00", "10:00", "11:00",
+        "12:00", "13:00", "14:00", "15:00", "16:00"
+    ]
+
+    const horariosDisponiveis = selectedDate.getDay() === 6 ? horariosSabado : horariosSemana
 
     useEffect(() => {
         carregarDados()
@@ -106,6 +111,12 @@ export default function Dashboard() {
 
         fetchOcupados();
     }, [formData.proprietarioId, selectedDate]);
+
+    useEffect(() => {
+        if (selectedTime && !horariosDisponiveis.includes(selectedTime)) {
+            setSelectedTime("")
+        }
+    }, [selectedDate, selectedTime, horariosDisponiveis]);
 
     const carregarDados = async () => {
         const token = localStorage.getItem("token");
